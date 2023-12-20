@@ -1,0 +1,1472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LearningHub.Nhs.UserApi</name>
+    </assembly>
+    <members>
+        <member name="T:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHHandler">
+            <summary>
+            Provide Authentication policy for Auth Service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Options.IOptions{LearningHub.Nhs.UserApi.Shared.Configuration.Settings})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHHandler"/> class.
+            Provide Authentication policy for Auth Service.
+            </summary>
+            <param name="contextAccessor">The context Accessor.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHRequirement)">
+            <summary>
+            Handle Authentication policy Requirement.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="requirement">The requirement.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHRequirement">
+            <summary>
+            Provide Authentication policy for Auth Service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHRequirement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Authentication.AuthorizeOrCallFromLHRequirement"/> class.
+            Provide Authentication policy for Auth Service.
+            </summary>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Authentication.LoginSso">
+            <summary>
+            Single Sign On login object.
+            </summary>
+        </member>
+        <member name="P:LearningHub.Nhs.UserApi.Authentication.LoginSso.UserId">
+            <summary>
+            Gets or sets external User id.
+            </summary>
+        </member>
+        <member name="P:LearningHub.Nhs.UserApi.Authentication.LoginSso.ExternalSystemId">
+            <summary>
+            Gets or sets external system id.
+            </summary>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase">
+            <summary>
+            The api elfh controller base.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase.currentUser">
+            <summary>
+            The current user.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase"/> class.
+            </summary>
+            <param name="userService">
+            The user service.
+            </param>
+        </member>
+        <member name="P:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase.CurrentUserId">
+            <summary>
+            Gets the current user id.
+            </summary>
+        </member>
+        <member name="P:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase.ElfhUserService">
+            <summary>
+            Gets the elfh user service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ApiControllerBase.GetCurrentUserAsync">
+            <summary>
+            The get current user async.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.AuthenticationController">
+            <summary>
+            Authentication operations.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IAuthenticationService,LearningHub.Nhs.UserApi.Services.Interface.ISecurityService,LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.IExternalSystemUserService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.AuthenticationController"/> class.
+            </summary>
+            <param name="authenticationService">The authentication service.</param>
+            <param name="elfhUserService">The elfh user service.</param>
+            <param name="securityService">The security service.</param>
+            <param name="extSysUserSvc">The external system service.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.AuthenticateElfhHubAsync(elfhHub.Nhs.Models.Common.Login)">
+            <summary>
+            Authenticate user.
+            </summary>
+            <param name="login">The login.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.AuthenticateSsoAsync(LearningHub.Nhs.UserApi.Authentication.LoginSso)">
+            <summary>
+            Authenticate SSO user.
+            </summary>
+            <param name="request">External login details.</param>
+            <returns>The <see cref="T:LearningHub.Nhs.Models.Common.LoginResult"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.CheckUserCredentialsElfhHubAsync(elfhHub.Nhs.Models.Common.Login)">
+            <summary>
+            Check credentials without user authentication.
+            </summary>
+            <param name="login">
+            The login.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.ValidateToken(System.String,System.String)">
+            <summary>
+            Validate user token.
+            </summary>
+            <param name="token">
+            The token.
+            </param>
+            <param name="locToken">
+            The loc Token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.AuthenticationController.SetInitialUserPassword(elfhHub.Nhs.Models.Common.PasswordCreateModel)">
+            <summary>
+            Set user's initial password.
+            </summary>
+            <param name="passwordCreateModel">
+            The password create model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.CountryController">
+            <summary>
+            The country controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.CountryController.countryService">
+            <summary>
+            The country service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.CountryController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.ICountryService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.CountryController"/> class.
+            </summary>
+            <param name="countryService">
+            The country service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.CountryController.GetById(System.Int32)">
+            <summary>
+            Get country by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.CountryController.GetAll">
+            <summary>
+            Get a page of Country records.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.CountryController.GetFiltered(System.String)">
+            <summary>
+            Get a subset of Country records.
+            </summary>
+            <param name="filter">
+            The filter.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController">
+            <summary>
+            The elfh tenant controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController.tenantService">
+            <summary>
+            The tenant service.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.ITenantService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.ElfhTenantController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController"/> class.
+            </summary>
+            <param name="tenantService">The tenant service.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController.GetByIdAsync(System.Int32,System.Boolean)">
+            <summary>
+            The get by id async.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <param name="includeTenantUrls">
+            The include tenant urls.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhTenantController.GetAllAsync(System.Boolean)">
+            <summary>
+            The get all async.
+            </summary>
+            <param name="includeTenantUrls">
+            The include tenant urls.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.ElfhUserController">
+            <summary>
+            Api for interacting with ELFH Users.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.IAuthenticationService,LearningHub.Nhs.UserApi.Services.Interface.IExternalSystemUserService,LearningHub.Nhs.UserApi.Services.Interface.IRegistrationService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.ElfhUserController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.ElfhUserController"/> class.
+            </summary>
+            <param name="elfhUserService">The elfh user service.</param>
+            <param name="authenticationService">The authentication service.</param>
+            <param name="extSysUserSvc">The external system service.</param>
+            <param name="registrationService">The registration service.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetBasicByUserId(System.Int32)">
+            <summary>
+            The get basic by user id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetByUserId(System.Int32)">
+            <summary>
+            Get e-LfH Hub user by id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetByUsername(System.String)">
+            <summary>
+            Get e-LfH Hub user by username.
+            </summary>
+            <param name="username">The username.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetUserIdByUsername(System.String)">
+            <summary>
+            Get e-LfH Hub user bu username.
+            </summary>
+            <param name="username">The username.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetByOpenAthensId(System.String)">
+            <summary>
+            Get e-LfH Hub user by OpenAthens id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetUserRoleName(System.Int32)">
+            <summary>
+            Get e-LfH Hub user role name by user id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.LinkExistingUserToSso(elfhHub.Nhs.Models.Common.LinkUserToSsoRequestViewModel)">
+            <summary>
+            Link existing user to sso.
+            </summary>
+            <param name="request">Link user to sso request.</param>
+            <returns>The <see cref="T:LearningHub.Nhs.Models.Common.LoginResultInternal"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.RegisterUser(elfhHub.Nhs.Models.Common.RegistrationRequestViewModel)">
+            <summary>
+            Register a new user.
+            </summary>
+            <param name="registrationRequest">The registration request.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetCurrentUserBasicDetails">
+            <summary>
+            Get current user's basic details.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetCurrentUser">
+            <summary>
+            Get current e-LfH Hub user.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetRegistrationStatus(System.String,System.String)">
+            <summary>
+            Get registration status of an email address.
+            </summary>
+            <param name="emailAddress">
+            The email address.
+            </param>
+            <param name="ipAddress">
+            The ip address.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.SyncSsoUsertoElfh(elfhHub.Nhs.Models.Common.LinkUserToSsoRequestViewModel)">
+            <summary>
+            Link existing user to sso.
+            </summary>
+            <param name="request">Link user to sso request.</param>
+            <returns>The <see cref="T:LearningHub.Nhs.Models.Common.LoginResultInternal"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateCurrentUserPassword(elfhHub.Nhs.Models.Common.PasswordUpdateModel)">
+            <summary>
+            Update the password of the current user.
+            </summary>
+            <param name="passwordUpdateModel">
+            The password update model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateLoginWizardFlag(System.Boolean)">
+            <summary>
+            Switch the login wizard flag.
+            </summary>
+            <param name="updateLoginWizardInProgress">
+            The update login wizard in progress.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateUserSecurityQuestions(System.Collections.Generic.List{elfhHub.Nhs.Models.Common.UserSecurityQuestionViewModel})">
+            <summary>
+            The update user security questions.
+            </summary>
+            <param name="userSecurityQuestions">
+            The user security questions.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdatePersonalDetails(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's personal details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateFirstName(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's first name details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The update user's first name.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateLastName(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's last name details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The update user's last name.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdatePreferredName(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's preferred name details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdatePrimaryEmail(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's primary email details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateSecondaryEmail(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's secondary email details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetPersonalDetails">
+            <summary>
+            GetPersonalDetails.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.DoesEmailExistForUser(System.String)">
+            <summary>
+            Check an email is already registered against a user.
+            </summary>
+            <param name="email">
+            The email.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.CreateElfhAccountWithLinkedOpenAthens(LearningHub.Nhs.Models.OpenAthens.CreateOpenAthensLinkToLhUser)">
+            <summary>
+            Create an ELFH user account linked to OpenAthens user attributes.
+            </summary>
+            <param name="newUserDetails">
+            The new user details.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.CreateOpenAthensLinkToUser(elfhHub.Nhs.Models.Common.OpenAthensToElfhUserLinkDetails)">
+            <summary>
+            Link an existing user account linked to OpenAthens user attributes.
+            </summary>
+            <param name="linkDetails">
+            The link details.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetUserAdminBasicFilteredPage(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Get a filtered page of User records.
+            </summary>
+            <param name="page">
+            The page.
+            </param>
+            <param name="pageSize">
+            The page size.
+            </param>
+            <param name="sortColumn">
+            The sort column.
+            </param>
+            <param name="sortDirection">
+            The sort direction.
+            </param>
+            <param name="filter">
+            The filter.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetUserAdminDetailById(System.Int32)">
+            <summary>
+            Returns the UserAdminDetail model for a particular user id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.GetTenantDescriptionByUserId(System.Int32)">
+            <summary>
+            Returns the tentants for a given user id.
+            </summary>
+            <param name="userId">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateUser(elfhHub.Nhs.Models.Common.UserAdminDetailViewModel)">
+            <summary>
+            Update an existing User.
+            </summary>
+            <param name="user">
+            The user.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.SendAdminPasswordResetEmail(System.Int32)">
+            <summary>
+            Send Admin Password Reset Email to the user.
+            </summary>
+            <param name="userId">
+            The user id.
+            </param>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.SendEmailToUser(elfhHub.Nhs.Models.Common.UserContactViewModel)">
+            <summary>
+            Sends an email to the user.
+            </summary>
+            <param name="vm">
+            The view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.HasMultipleUsersForEmail(System.String,System.String)">
+            <summary>
+            The has multiple users for email.
+            </summary>
+            <param name="emailAddress">
+            The email address.
+            </param>
+            <param name="ipAddress">
+            The ip address.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.ForgotPassword(elfhHub.Nhs.Models.Common.ForgotPasswordViewModel)">
+            <summary>
+            The forgot password.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.LinkEmploymentRecordToUser">
+            <summary>
+            Link Employment Record to User.
+            </summary>
+            <returns>
+            Nothing.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateEmailDetails(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's email details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateLocationDetails(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's location details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateCountryDetails(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's Country details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ElfhUserController.UpdateRegionDetails(elfhHub.Nhs.Models.Common.PersonalDetailsViewModel)">
+            <summary>
+            Update the user's region details.
+            </summary>
+            <param name="personalDetailsViewModel">
+            The personal details view model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController">
+            <summary>
+            External System Properties.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.IExternalSystemService,LearningHub.Nhs.UserApi.Services.Interface.IExternalSystemDeepLinkService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.ExternalSystemController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController"/> class.
+            External System Controller.
+            </summary>
+            <param name="elfhUserService">The elfh user service.</param>
+            <param name="lhExtSysSvc">The learning hub ext Sys Svc.</param>
+            <param name="lhExtSysDeepLinkSvc">The learning hub ext deep link Svc.</param>
+            <param name="logger">
+            The logger.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.GetExternalClient(System.String)">
+            <summary>
+            Get external system entity by client code.
+            </summary>
+            <param name="clientCode">The client code.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.GetExternalClientDeepLink(System.String)">
+            <summary>
+            Get external system deep link entity by code.
+            </summary>
+            <param name="code">The end client code.</param>
+            <returns>The external system deep link.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.GetExternalSystemById(System.Int32)">
+            <summary>
+            Get external system entity by client code.
+            </summary>
+            <param name="id">The Id.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.GetFilteredPage(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            The get filtered page.
+            </summary>
+            <param name="page">
+            The page.
+            </param>
+            <param name="pageSize">
+            The page size.
+            </param>
+            <param name="sortColumn">
+            The sort column.
+            </param>
+            <param name="sortDirection">
+            The sort direction.
+            </param>
+            <param name="filter">
+            The filter.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.PostAsync(LearningHub.Nhs.Models.Entities.External.ExternalSystem)">
+            <summary>
+            Create a new ExternalSystem.
+            </summary>
+            <param name="externalsystem">
+            The lhExtSysSvc.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.PutAsync(LearningHub.Nhs.Models.Entities.External.ExternalSystem)">
+            <summary>
+            Update an existing ExternalSystem.
+            </summary>
+            <param name="externalsystem">
+            The lhExtSysSvc.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.ExternalSystemController.DeleteAsync(System.Int32)">
+            <summary>
+            Deletes a lhExtSysSvc.
+            </summary>
+            <param name="id">The lhExtSysSvc id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.GradeController">
+            <summary>
+            The grade controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.GradeController.gradeService">
+            <summary>
+            The grade service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.GradeController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IGradeService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.GradeController"/> class.
+            </summary>
+            <param name="gradeService">
+            The grade service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.GradeController.GetById(System.Int32)">
+            <summary>
+            The get by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.GradeController.GetAll">
+            <summary>
+            Get a all Grade records.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.GradeController.GetByJobRole(System.Int32)">
+            <summary>
+            Get a Grade records by JobRole.
+            </summary>
+            <param name="jobRoleId">
+            The job role id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.GradeController.GetPagedByJobRole(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get paged records by JobRole.
+            </summary>
+            <param name="jobRoleId">
+            The job role id.
+            </param>
+            <param name="page">page.</param>
+            <param name="pageSize">pageSize.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.JobRoleController">
+            <summary>
+            The job role controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.JobRoleController.jobRoleService">
+            <summary>
+            The job role service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IJobRoleService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.JobRoleController"/> class.
+            </summary>
+            <param name="jobRoleService">The job role service.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.GetById(System.Int32)">
+            <summary>
+            Get JobRole record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.GetAll">
+            <summary>
+            Get all StaffGroup records.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.GetFilteredWithStaffGroup(System.String)">
+            <summary>
+            Get a page of StaffGroup records.
+            </summary>
+            <param name="filter">
+            The filter.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.GetPagedFilteredWithStaffGroup(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get paged StaffGroup records.
+            </summary>
+            <param name="filter">filter.</param>
+            <param name="page">page.</param>
+            <param name="pageSize">pageSize.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.JobRoleController.GetByStaffGroupId(System.Int32)">
+            <summary>
+            Get job roles by staff group id.
+            </summary>
+            <param name="staffGroupId">The staffGroupId.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.LocationController">
+            <summary>
+            The location controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.LocationController.locationService">
+            <summary>
+            The location service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LocationController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.ILocationService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.LocationController"/> class.
+            </summary>
+            <param name="locationService">
+            The location service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LocationController.GetById(System.Int32)">
+            <summary>
+            Get Location record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LocationController.GetBySearchCriteria(System.String)">
+            <summary>
+            Get Locations by search criteria.
+            </summary>
+            <param name="criteria">
+            The criteria.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LocationController.GetPagedBySearchCriteria(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get Locations by search criteria.
+            </summary>
+            <param name="criteria">
+            The criteria.
+            </param>
+            <param name="page">page.</param>
+            <param name="pageSize">pageSize.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.LoginWizardController">
+            <summary>
+            LoginWizard Controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.loginWizardService">
+            <summary>
+            The login wizard service.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.ILoginWizardService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.LoginWizardController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.LoginWizardController"/> class.
+            </summary>
+            <param name="elfhUserService">
+            The elfh user service.
+            </param>
+            <param name="loginWizardService">
+            The login wizard service.
+            </param>
+            <param name="logger">
+            The logger.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.GetLoginWizardStagesByUserId(System.Int32)">
+            <summary>
+            The get login wizard stages by user id.
+            </summary>
+            <param name="userId">
+            The user id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.CreateStageActivity(System.Tuple{System.Int32,System.Int32})">
+            <summary>
+            The create stage activity.
+            </summary>
+            <param name="stageAndUser">
+            The stage and user.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.GetSecurityQuestionsByUserId(System.Int32)">
+            <summary>
+            The get security questions by user id.
+            </summary>
+            <param name="userId">
+            The user id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.GetSecurityQuestions">
+            <summary>
+            The get security questions.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.StartWizardForUser(elfhHub.Nhs.Models.Common.UserBasic)">
+            <summary>
+            Update the current user to indicate Logon Wizard stated.
+            </summary>
+            <param name="user">
+            The user.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.LoginWizardController.CompleteWizardForUser(elfhHub.Nhs.Models.Common.UserBasic)">
+            <summary>
+            Update the current user to indicate Logon Wizard completed.
+            </summary>
+            <param name="user">
+            The user.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController">
+            <summary>
+            The medical council controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.medicalCouncilService">
+            <summary>
+            The medical council service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IMedicalCouncilService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController"/> class.
+            </summary>
+            <param name="medicalCouncilService">
+            The medical council service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.ValidateGmcNumber(System.String,System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            The validate gmc number.
+            </summary>
+            <param name="lastname">
+            The lastname.
+            </param>
+            <param name="medicalCouncilNumber">
+            The medical council number.
+            </param>
+            <param name="yearOfQualification">
+            The year of qualification.
+            </param>
+            <param name="firstname">
+            The firstname.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.ValidateGMCNumber(System.String,System.String)">
+            <summary>
+            The validate gmc number.
+            </summary>
+            <param name="lastname">
+            The lastname.
+            </param>
+            <param name="medicalCouncilNumber">
+            The medical council number.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.ValidateGDCNumber(System.String,System.String)">
+            <summary>
+            The validate gdc number.
+            </summary>
+            <param name="lastname">
+            The lastname.
+            </param>
+            <param name="medicalCouncilNumber">
+            The medical council number.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.ValidateNMCNumber(System.String)">
+            <summary>
+            The validate nmc number.
+            </summary>
+            <param name="medicalCouncilNumber">
+            The medical council number.
+            </param>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.MedicalCouncilController.GetByStaffGroupId(System.Int32)">
+            <summary>
+            Get medical council by jobRoleId.
+            </summary>
+            <param name="jobRoleId">The jobRoleId.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.RegionController">
+            <summary>
+            The region controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.RegionController.regionService">
+            <summary>
+            The region service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.RegionController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IRegionService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.RegionController"/> class.
+            </summary>
+            <param name="regionService">The region service.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.RegionController.GetById(System.Int32)">
+            <summary>
+            Get Region record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.RegionController.GetAll">
+            <summary>
+            Get a page of Region records.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.RegionController.GetAllPaged(System.Int32,System.Int32)">
+            <summary>
+            Get paged Region records.
+            </summary>
+            <param name="page">page.</param>
+            <param name="pageSize">pageSize.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.SpecialtyController">
+            <summary>
+            The specialty controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.SpecialtyController.specialtyService">
+            <summary>
+            The specialty service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.SpecialtyController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.ISpecialtyService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.SpecialtyController"/> class.
+            </summary>
+            <param name="specialtyService">
+            The specialty service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.SpecialtyController.GetById(System.Int32)">
+            <summary>
+            Get Specialty record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.SpecialtyController.GetAll">
+            <summary>
+            Get a page of Specialty records.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.SpecialtyController.GetAllPaged(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get paged Specialty records.
+            </summary>
+            <param name="filter">filter.</param>
+            <param name="page">page.</param>
+            <param name="pageSize">pageSize.</param>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.StaffGroupController">
+            <summary>
+            The staff group controller.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.StaffGroupController.staffGroupService">
+            <summary>
+            The staff group service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.StaffGroupController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IStaffGroupService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.StaffGroupController"/> class.
+            </summary>
+            <param name="staffGroupService">
+            The staff group service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.StaffGroupController.GetById(System.Int32)">
+            <summary>
+            The get by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.StaffGroupController.GetAll">
+            <summary>
+            Get a page of StaffGroup records.
+            </summary>
+            <returns>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController">
+            <summary>
+            TermsAndConditions operations.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController.termsAndConditionsService">
+            <summary>
+            The terms and conditions service.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.ITermsAndConditionsService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController"/> class.
+            </summary>
+            <param name="elfhUserService">
+            The elfh user service.
+            </param>
+            <param name="termsAndConditionsService">
+            The terms and conditions service.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController.LatestVersion(System.Int32)">
+            <summary>
+            Get latest version of Terms And Conditions by tenantId.
+            </summary>
+            <param name="tenantId">
+            The tenant id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.TermsAndConditionsController.AcceptByUser(elfhHub.Nhs.Models.Common.UserTermsAndConditionsViewModel)">
+            <summary>
+            Create a new UserTermsAndConditions record.
+            </summary>
+            <param name="userTermsAndConditions">
+            The user terms and conditions.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController">
+            <summary>
+            UserEmployment operations.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.userEmploymentService">
+            <summary>
+            The user employment service.
+            </summary>
+        </member>
+        <member name="F:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IElfhUserService,LearningHub.Nhs.UserApi.Services.Interface.IUserEmploymentService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.UserEmploymentController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController"/> class.
+            </summary>
+            <param name="elfhUserService">
+            The elfh user service.
+            </param>
+            <param name="userEmploymentService">
+            The user employment service.
+            </param>
+            <param name="logger">
+            The logger.
+            </param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.GetById(System.Int32)">
+            <summary>
+            Get UserEmployment record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.GetPrimaryForUser(System.Int32)">
+            <summary>
+            Get Prinary UserEmployment record by id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserEmploymentController.PutAsync(elfhHub.Nhs.Models.Common.UserEmploymentViewModel)">
+            <summary>
+            Update an existing UserEmployment record.
+            </summary>
+            <param name="userEmployment">
+            The user employment.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Controllers.UserHistoryController">
+            <summary>
+            The user history controller.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserHistoryController.#ctor(LearningHub.Nhs.UserApi.Services.Interface.IUserHistoryService,Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.Controllers.UserHistoryController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Controllers.UserHistoryController"/> class.
+            </summary>
+            <param name="userHistoryService">The user history service.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserHistoryController.GetById(System.Int32)">
+            <summary>
+            Get UserHistory record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserHistoryController.GetByUserId(System.Int32)">
+            <summary>
+            Get UserHistory records by user id.
+            </summary>
+            <param name="id">
+            The user id.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserHistoryController.GetUserHistoryPageAsync(System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get UserHistory record by id.
+            </summary>
+            <param name="page">
+            The page.
+            </param>
+            <param name="pageSize">
+            The page size.
+            </param>
+            <param name="sortColumn">
+            The sort column.
+            </param>
+            <param name="sortDirection">
+            The sort direction.
+            </param>
+            <param name="presetFilter">
+            The preset filter.
+            </param>
+            <param name="filter">
+            The filter.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Controllers.UserHistoryController.PostAsync(elfhHub.Nhs.Models.Common.UserHistoryViewModel)">
+            <summary>
+            Create a UserHistory.
+            </summary>
+            <param name="userHistory">The user history.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.ExceptionMiddleware">
+            <summary>
+            The exception middleware.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.ExceptionMiddleware.#ctor(Microsoft.Extensions.Logging.ILogger{LearningHub.Nhs.UserApi.ExceptionMiddleware},Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.ExceptionMiddleware"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="hostingEnv">The hosting env.</param>
+            <param name="next">The next.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.ExceptionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            The invoke.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Helpers.QuerystringHelper">
+            <summary>
+            The querystring helper.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Helpers.QuerystringHelper.DecodeParameter(System.String)">
+            <summary>
+            The decode parameter.
+            </summary>
+            <param name="parameter">
+            The parameter.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.Middleware.NLogMiddleware">
+            <summary>
+            Defines the <see cref="T:LearningHub.Nhs.UserApi.Middleware.NLogMiddleware" />.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Middleware.NLogMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LearningHub.Nhs.UserApi.Middleware.NLogMiddleware"/> class.
+            Constructor.
+            </summary>
+            <param name="next">next.</param>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.Middleware.NLogMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Process the Request and Catch Exceptions.
+            </summary>
+            <param name="context">context.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.ServiceCollectionExtension">
+            <summary>
+            ServiceCollectionExtension.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.ServiceCollectionExtension.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            ConfigureServices.
+            </summary>
+            <param name="services">IServiceCollection.</param>
+            <param name="configuration">IConfiguration.</param>
+        </member>
+        <member name="T:LearningHub.Nhs.UserApi.ServiceMappings">
+            <summary>
+            Extension class for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> service mappings.
+            </summary>
+        </member>
+        <member name="M:LearningHub.Nhs.UserApi.ServiceMappings.AddMappings(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            The add learning hub mappings.
+            </summary>
+            <param name="services">The services.</param>
+            <param name="configuration">The configuration.</param>
+        </member>
+    </members>
+</doc>
