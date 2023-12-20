@@ -1,0 +1,39 @@
+﻿@using LearningHub.Nhs.Auth.Configuration
+@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Options
+@using Newtonsoft.Json
+@inject IOptions<OpenAthensLearningHubClientDictionary> OaSites
+@inject IConfiguration Configuration
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model LearningHub.Nhs.Auth.ViewModels.OaCallBackViewModel
+
+@{
+    ViewData["Title"] = "Processing OpenAthens Login";
+    Layout = null;
+    var claims = Model.Claims.ToDictionary(k => k.Type, v => v.Value);
+    var payload = JsonConvert.SerializeObject(new { Model.Provider, Model.ProviderUserId, claims, Model.ClientId }
+        , Formatting.None, new JsonSerializerSettings
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        });
+}
+<html>
+<head>
+</head>
+<body>
+    <p>Processing OpenAthens Login</p>
+<form id="processOaForm" action="@($"https://{OaSites.Value[Model.ClientId].GetStringBeforeOrEmpty()}/openathens")" method="post">
+    <input type="hidden" name="payload" value="@payload"/>
+    <input type="hidden" name="authId" value="@Configuration["AuthKey"]"/>
+    <input type="hidden" name="origin" value="@Configuration["AuthOrigin"]"/>
+</form>
+
+    <script>
+        window.document.body.onload = function () {
+            setTimeout(function () {
+                document.getElementById("processOaForm").submit();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

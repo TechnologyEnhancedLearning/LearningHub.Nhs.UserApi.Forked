@@ -1,0 +1,36 @@
+﻿div.vlp div.loginContainer div.loginPanel div.panel,
+div.vlp div.logoutContainer div.logoutPanel div.panel {
+    border-top: 5px solid #3360A9;
+}
+
+div.vlp div.loginContainer .btn-primary {
+    background-color: #AF1064;
+    border-color: transparent;
+}
+
+header.vlp {
+    div.header-logo {
+        background-color: #3360A9;
+        padding: 0 3.5px;
+
+        img {
+            width: inherit !important;
+            height: inherit !important;
+            max-width: 200px;
+            max-height: 100px;
+        }
+    }
+}
+
+@media (max-width: 768.98px) {
+    header.vlp {
+        div.header-logo {
+            img {
+                width: inherit !important;
+                height: inherit !important;
+                max-width: 160px;
+                max-height: 80px;
+            }
+        }
+    }
+}

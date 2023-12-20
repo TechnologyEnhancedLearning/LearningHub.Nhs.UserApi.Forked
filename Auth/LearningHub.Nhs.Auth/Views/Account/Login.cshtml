@@ -1,0 +1,83 @@
+﻿@model LearningHub.Nhs.Auth.Models.Account.LoginViewModel
+@{
+  ViewData["Layout"] = "learninghub/_Layout";
+}
+<div class="login-page @Model.LoginClientTemplate.ClientCssClass" style="margin-top:5px;">
+
+  <partial name="_ValidationSummary" />
+
+  @*<div class="row">*@
+
+  @if (Model.EnableLocalLogin)
+  {
+    <div class="loginContainer">
+      <div class="loginPanel">
+        <div class="panel">
+          <div class="panel-header text-center">
+            <h3 class="py-5">Sign in with your @Model.LoginClientTemplate.ClientDescription account</h3>
+          </div>
+          <div class="panel-body">
+
+            <form asp-route="Login">
+              <input type="hidden" asp-for="ReturnUrl" />
+
+              <fieldset>
+                <div class="form-group">
+                  <label asp-for="Username"></label>
+                  <input class="form-control" placeholder="Username" asp-for="Username" autofocus="@string.IsNullOrWhiteSpace(Model.Username)">
+                </div>
+                <div class="form-group">
+                  <label asp-for="Password"></label>
+                  <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off" autofocus="@string.IsNullOrWhiteSpace(Model.Password)">
+                </div>
+                @if (Model.AllowRememberLogin)
+                {
+                  <div class="form-group">
+                    <div>
+                      <label asp-for="RememberLogin" class="checkContainer login-remember">
+                        Remember me
+                        <input asp-for="RememberLogin">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                }
+                <div class="form-group d-flex justify-content-between login-button-area">
+                  <button class="btn btn-primary" name="button" value="login">Sign in</button>
+                  @*<button class="btn btn-default" name="button" value="cancel">Cancel</button>*@
+                  @if (Model.LoginClientTemplate.UseForgottenPassword)
+                  {
+                    <a href="@($"https://{Model.LoginClientTemplate.ClientUrl}/{Model.LoginClientTemplate.ForgottenPasswordRelativeUrl}")">Forgotten username or password</a>
+                  }
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="reg-support-urls-container d-flex justify-content-between">
+        @if (Model.LoginClientTemplate.UseRegister)
+        {
+          <a href="@($"https://{Model.LoginClientTemplate.ClientUrl}/{Model.LoginClientTemplate.RegisterAccountRelativeUrl}")">Register for an account</a>
+        }
+        @if (Model.LoginClientTemplate.UseSupport)
+        {
+          <a href="@Model.LoginClientTemplate.SupportUrl">Help and support</a>
+        }
+      </div>
+      <div class="loginFooter">
+        &copy; NHS England
+      </div>
+    </div>
+
+  }
+
+  @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+  {
+    <div class="alert alert-warning">
+      <strong>Invalid login request</strong>
+      There are no login schemes configured for this client.
+    </div>
+  }
+  @*</div>*@
+</div>

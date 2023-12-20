@@ -1,0 +1,156 @@
+﻿@import '_variables.scss';
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 130px !important;
+    background-color: $nhsuk-grey-white;
+}
+
+header {
+    background-color: $nhsuk-blue;
+    height: 112px;
+    padding: 0 15px;
+}
+
+footer {
+    background-color: $nhsuk-blue;
+    height: 130px;
+    padding: 0 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.container-fluid {
+    background-color: #fff;
+}
+
+.lh-container {
+    max-width: 1144px;
+    margin: 0 auto;
+}
+
+.sso-frame {
+    max-width: 756px
+}
+
+.header-title-sso {
+    cursor: pointer;
+    font-family: FrutigerLTW01-65Bold,Arial,sans-serif;
+    font-size: 2.7rem;
+    margin-top: 5px;
+    margin-bottom: 0;
+    clear: both;
+    min-width: 215px;
+}
+
+.header-beta {
+    color: #c8e4ff;
+    font-family: FrutigerLTW01-55Roman,Arial,sans-serif;
+    font-size: 1.7rem;
+    margin-left: 2px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    max-width: 500px;
+}
+
+.form-control {
+    margin-top: 6px;
+}
+
+.sso-btn {
+    color: #fff;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    background: $nhsuk-green;
+    border-radius: 6px;
+}
+
+.terms-conditions {
+    background-color: $nhsuk-grey-white;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+}
+
+.terms-conditions input {
+    width: 30px;
+}
+
+.sso-chk-tnc {
+    width: 30px;
+}
+
+.input-validation-error {
+    border: 4px solid $nhsuk-red !important;
+}
+
+.grade-form-group {
+    border-left: 5px solid #C4C4C4;
+    padding-left: 14px;
+}
+
+.form-group--error {
+    border-left: 8px solid #D5281B;
+    padding-left: 14px;
+}
+
+input, select {
+    height: 45px !important;
+    border: 2px solid #425563 !important;
+    border-radius: 4px !important;
+}
+
+.twitter-typeahead {
+    width: 100%;
+
+    .tt-menu {
+        background-color: #fff;
+        border: 1px solid #000;
+    }
+
+    .tt-suggestion {
+        padding: 6px 8px;
+        font-size: 14px;
+        margin: 0;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #E8F0FE;
+        }
+    }
+}
+
+.locationInfoSection {
+    padding-left: 23px;
+    position: relative;
+    margin-top: 5px;
+}
+
+#whyLocationInfo {
+    &:before {
+        content: url(/images/triangle-down.svg);
+        position: absolute;
+        top: 5px;
+        left: 2px;
+    }
+}
+
+#whyLocationInfo.collapsed {
+    &:before {
+        content: url(/images/triangle-right.svg);
+    }
+}

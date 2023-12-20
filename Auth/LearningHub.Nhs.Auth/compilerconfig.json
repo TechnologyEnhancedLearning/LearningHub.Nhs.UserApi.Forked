@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/_variables.css",
+    "inputFile": "wwwroot/css/_variables.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/_mixins.css",
+    "inputFile": "wwwroot/css/_mixins.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/auth.css",
+    "inputFile": "wwwroot/css/auth.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/css/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/sso.css",
+    "inputFile": "wwwroot/css/sso.scss"
+  }
+]

@@ -1,0 +1,178 @@
+﻿@import 'auth.elfhHub.scss';
+@import 'auth.minded.scss';
+@import 'auth.eintegrity.scss';
+@import 'auth.etft.scss';
+@import 'auth.disability-matters.scss';
+@import 'auth.population-wellbeing.scss';
+@import 'auth.vlp.scss';
+@import 'auth.carers.scss';
+
+body {
+    background-color: #F0F4F5;
+}
+
+div.headerPanel {
+    align-items: center;
+    margin: auto;
+    color: #212B32;
+    display: flex;
+    justify-content: space-between;
+    height: 160px;
+    padding-top: 60px;
+
+    div.header-logo {
+        img {
+            width: 200px;
+        }
+    }
+
+    div.nhs-brand {
+        img {
+            width: 160px;
+            margin-left: -20px;
+            padding-bottom: 19px;
+        }
+    }
+}
+
+div.headerPanel div.header-title {
+    font-size: 32px;
+    margin-top: 0;
+}
+
+div.loginFooter {
+    font-size: 16px;
+    color: #425462;
+}
+
+div.loginContainer,
+div.logoutContainer,
+div.page-consent {
+    width: 100%; /*570px;*/
+    margin: auto;
+}
+
+div.loginContainer .form-group {
+    padding-top: 20px;
+}
+
+div.loginContainer label {
+    margin-bottom: 10px;
+}
+
+div.loginContainer div.loginPanel,
+div.logoutContainer div.logoutPanel {
+    margin-bottom: 35px;
+}
+
+div.loginContainer div.reg-support-urls-container {
+    margin-bottom: 55px;
+}
+
+div.loginContainer div.login-button-area {
+    align-items: center;
+
+    a {
+        font-size: 1.2rem;
+        text-align: right;
+    }
+}
+
+div.loginContainer div.loginPanel div.panel,
+div.logoutContainer div.logoutPanel div.panel {
+    padding: 0;
+    border-radius: 0 0 12px 12px;
+    border-left: 1px solid #AEB7BD;
+    border-right: 1px solid #AEB7BD;
+    border-bottom: 1px solid #AEB7BD;
+    border-top: 5px solid #005EB8;
+    min-height: 545px !important;
+    background-color : white;
+}
+
+div.loginContainer div.loginPanel div.panel div.panel-header,
+div.logoutContainer div.logoutPanel div.panel div.panel-header {
+    padding-left: 60px;
+    padding-right: 60px;
+    height: auto;
+}
+
+div.loginContainer div.loginPanel div.panel div.panel-body,
+div.logoutContainer div.logoutPanel div.panel div.panel-body {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+div.loginContainer div.loginPanel div.panel div.panel-body div.login-remember {
+    display: flex;
+    justify-content: flex-start;
+}
+
+div.loginContainer div.loginPanel div.panel div.panel-body div.login-remember label {
+    margin-top: 3px;
+    margin-left: 9px;
+    color: #212B32;
+}
+
+div.loginContainer .form-control:focus {
+    box-shadow: none;
+}
+
+div.loginContainer input {
+    border: 2px solid #425563 !important;
+}
+
+div.loginContainer .btn {
+    margin-top: 3px;
+    font-size: 19px;
+    line-height: 23px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    width: 134px;
+    margin-right: 36px;
+    background-color: #AEB7BD;
+    color: #fff;
+}
+
+div.loginContainer .btn-primary {
+    background-color: #005eb8;
+}
+
+@media (max-width: 768.98px) {
+    div.headerPanel {
+        div.header-logo {
+            img {
+                width: 160px;
+            }
+        }
+
+        div.nhs-brand {
+            img {
+                width: 120px;
+                margin-left: -20px;
+                padding-bottom: 19px;
+            }
+        }
+
+        width: inherit;
+        height: inherit;
+        padding: inherit;
+    }
+
+    div.loginContainer div.login-button-area {
+        a {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+@media (min-width: 768.98px) {
+    div.container-fluid-login {
+        div.container-fluid {
+            margin: 0 auto;
+            width: 570px;
+        }
+
+        width: 100%;
+    }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "learninghubnhsauth",
+  "description": "Learning Hub Auth Project",
+  "version": "1.0.0",
+  "author": "HEE",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "npm run sass && cross-env NODE_ENV=development webpack",
+    "watch": "concurrently npm:watch:*",
+    "watch:sass": "npm run sass -- --watch",
+    "watch:webpack": "cross-env NODE_ENV=development webpack --watch --progress --color --bail",
+    "build": "concurrently npm:build:*",
+    "build:sass": "npm run sass -- --quiet",
+    "build:webpack": "cross-env NODE_ENV=production webpack --progress",
+    "sass": "sass Styles:wwwroot/css --quiet-deps --style=compressed"
+  },
+  "browserslist": [
+    "ie 11"
+  ],
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "concurrently": "^7.2.0",
+    "core-js": "^3.6.5",
+    "nhsuk-frontend": "^7.0.0",
+    "node": "^12.19.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "babel-core": "^4.7.16",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.1",
+    "ts-node": "^10.2.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.79.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

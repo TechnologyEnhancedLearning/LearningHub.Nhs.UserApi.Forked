@@ -1,0 +1,26 @@
+﻿@{
+    var version = typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.GetName().Version.ToString();
+}
+
+    <article>
+        <h1>@ViewData["Title"] </h1>
+        <div class="row">
+            <div class="col-lg-9 pr-5">
+                <section>
+                    <h2>
+                        Welcome to IdentityServer4
+                        <small>(version @version)</small>
+                    </h2>
+                    <p>
+                        IdentityServer publishes a
+                        <a href="~/.well-known/openid-configuration">discovery document</a>
+                        where you can find metadata and links to all the endpoints, key material, etc.
+                    </p>
+                    <p>
+                        Click <a href="~/grants">here</a> to manage your stored grants.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </article>
+
