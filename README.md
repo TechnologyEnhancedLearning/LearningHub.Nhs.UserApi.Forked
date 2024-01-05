@@ -119,7 +119,7 @@ Add appsettings.Development.json files to the following projects:
 
 Go through each of the app settings files and ensure connection strings are correct.
 
-Look for references in each of the App Settings files to the URLs of other parts of the service and update them to the URLs specified above
+Look for references in each of the App Settings files to the URLs of other parts of the service and update them to the URLs specified above.
 
 If you are an official contributor (see below) working appsettings.Development.json will be provided by the service team.
 
