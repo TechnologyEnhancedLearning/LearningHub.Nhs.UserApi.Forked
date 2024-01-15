@@ -17,7 +17,7 @@ using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddUserSecrets(string.Empty);
+builder.Configuration.AddUserSecrets("a2ecb5d2-cf13-4551-9cb6-3d86dfbcf8ef");
 
 builder.Logging.ClearProviders();
 
