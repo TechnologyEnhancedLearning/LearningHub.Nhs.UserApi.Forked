@@ -18,7 +18,7 @@ resources:
     ref: refs/heads/CI
 jobs:
 - job: Job_1
-  displayName: Agent job Binon
+  displayName: Agent job
   steps:
   - checkout: self
     clean: true
