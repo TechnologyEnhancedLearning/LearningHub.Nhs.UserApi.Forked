@@ -1,5 +1,5 @@
 ﻿// <copyright file="Program.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
+// Copyright (c) HEE.nhs.uk. 
 // </copyright>
 
 #pragma warning disable SA1200 // Using directives should be placed correctly 
