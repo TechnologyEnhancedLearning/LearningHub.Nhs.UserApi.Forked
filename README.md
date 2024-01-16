@@ -148,7 +148,7 @@ Go to: **Tools > NuGet Package Manager > Manage NuGet Packages for Solution > Co
 
 Click the **+** button to create a new package source with name `LHPackages` and source: https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json
 
-## Rebuild and run
+## Rebuild and run 
 
 1. Rebuild the solution
 2. Set **LearningHub.Nhs.WebUI** as the startup Project
