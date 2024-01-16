@@ -7,7 +7,7 @@ variables:
 trigger:
   branches:
     include:
-    - refs/heads/CI
+    - refs/heads/ci
 name: $(date:yyyyMMdd)$(rev:.r)
 resources:
   repositories:
@@ -18,7 +18,7 @@ jobs:
 - job: Job_1
   displayName: Agent job
   pool:
-    name: Azure Pipelines
+    vmImage: windows-latest
   steps:
   - checkout: self
     clean: true
