@@ -9,6 +9,8 @@ trigger:
     include:
     - refs/heads/ci
 name: $(date:yyyyMMdd)$(rev:.r)
+pool:
+  vmImage: windows-latest
 resources:
   repositories:
   - repository: self
@@ -17,8 +19,6 @@ resources:
 jobs:
 - job: Job_1
   displayName: Agent job
-  pool:
-    vmImage: windows-latest
   steps:
   - checkout: self
     clean: true
