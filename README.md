@@ -1,4 +1,4 @@
-# Introduction 
+# Introduction
 This is the official open source repository for the [Learning Hub](https://learninghub.nhs.uk/) user profile and authentication service.
 
 This repository is used to provide user authentication for the main [Learning Hub repository](https://github.com/TechnologyEnhancedLearning/LearningHub.Nhs.WebUI).
