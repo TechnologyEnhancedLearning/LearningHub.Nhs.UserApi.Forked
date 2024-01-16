@@ -1,0 +1,99 @@
+# Agent Queue 'Azure Pipelines' was used with unrecognized Agent Specification, vmImage property must be specified to determine image - https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#software
+variables:
+- name: BuildParameters.RestoreBuildProjects
+  value: '**/*.csproj'
+- name: BuildParameters.TestProjects
+  value: '**/*[Tt]ests/*.csproj'
+trigger:
+  branches:
+    include:
+    - refs/heads/ci
+name: $(date:yyyyMMdd)$(rev:.r)
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/CI
+jobs:
+- job: Job_1
+  displayName: Agent job
+  pool:
+    name: Azure Pipelines
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: NodeTool@0
+    displayName: Use Node 12.19
+    inputs:
+      versionSpec: 12.19
+  - task: Npm@1
+    displayName: npm custom
+    inputs:
+      command: custom
+      workingDir: Auth/LearningHub.Nhs.Auth
+      verbose: false
+      customCommand: install -f
+  - task: Npm@1
+    displayName: run webpack build
+    inputs:
+      command: custom
+      workingDir: Auth/LearningHub.Nhs.Auth
+      verbose: false
+      customCommand: run build
+  - task: NuGetToolInstaller@1
+    displayName: Use NuGet 5.8
+    inputs:
+      versionSpec: 5.8
+  - task: NuGetCommand@2
+    displayName: NuGet restore
+    inputs:
+      feedRestore: d99eaf2c-ad74-4a35-876e-f7dc1e45a604
+  - task: DotNetCoreCLI@2
+    displayName: Restore
+    inputs:
+      command: restore
+      projects: $(BuildParameters.RestoreBuildProjects)
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects: $(BuildParameters.RestoreBuildProjects)
+      arguments: --configuration $(BuildConfiguration) /p:Platform=x64
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    enabled: False
+    inputs:
+      command: test
+      projects: $(BuildParameters.TestProjects)
+      arguments: --configuration $(BuildConfiguration)
+  - task: DotNetCoreCLI@2
+    displayName: Publish Auth
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: '**/*LearningHub.Nhs.Auth.csproj'
+      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)/Auth
+      zipAfterPublish: True
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Artifact Auth
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)/Auth
+      ArtifactName: Auth
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+  - task: DotNetCoreCLI@2
+    displayName: Publish UserAPI
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: '**/*LearningHub.Nhs.UserApi.csproj'
+      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)/UserAPI
+      zipAfterPublish: True
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Artifact UserAPI
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)/UserAPI
+      ArtifactName: UserAPI
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+...
