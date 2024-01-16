@@ -7,7 +7,7 @@ The Learning Hub is the national digital learning platform providing easy access
 
 The Learning Hub is provided and supported the Technology Enhanced Learning platforms team at [NHS England](https://www.england.nhs.uk/).
 
-# Getting Started 
+# Getting Started
 
 ## Required installs
 - [Visual Studio Professional 2022](https://visualstudio.microsoft.com/downloads/) or other suitable An IDE that supports the Microsoft Tech Stack
