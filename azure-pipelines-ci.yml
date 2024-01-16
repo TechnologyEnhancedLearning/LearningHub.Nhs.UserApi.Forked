@@ -7,7 +7,7 @@ variables:
 trigger:
   branches:
     include:
-    - refs/heads/ci
+    - refs/heads/CI
 name: $(date:yyyyMMdd)$(rev:.r)
 resources:
   repositories:
@@ -18,7 +18,7 @@ jobs:
 - job: Job_1
   displayName: Agent job
   pool:
-    vmImage: windows-latest
+    name: Azure Pipelines
   steps:
   - checkout: self
     clean: true
@@ -48,10 +48,7 @@ jobs:
   - task: NuGetCommand@2
     displayName: NuGet restore
     inputs:
-      command: 'restore'
-      restoreSolution: '**/*.sln'
-      feedsToUse: 'select'
-      vstsFeed: 'd99eaf2c-ad74-4a35-876e-f7dc1e45a604'
+      feedRestore: d99eaf2c-ad74-4a35-876e-f7dc1e45a604
   - task: DotNetCoreCLI@2
     displayName: Restore
     inputs:
