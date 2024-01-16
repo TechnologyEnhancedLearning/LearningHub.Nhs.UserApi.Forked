@@ -48,7 +48,10 @@ jobs:
   - task: NuGetCommand@2
     displayName: NuGet restore
     inputs:
-      feedRestore: d99eaf2c-ad74-4a35-876e-f7dc1e45a604
+      command: 'restore'
+      restoreSolution: '**/*.sln'
+      feedsToUse: 'select'
+      vstsFeed: 'd99eaf2c-ad74-4a35-876e-f7dc1e45a604'
   - task: DotNetCoreCLI@2
     displayName: Restore
     inputs:
