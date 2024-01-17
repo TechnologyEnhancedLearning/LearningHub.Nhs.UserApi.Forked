@@ -1,233 +1,236 @@
 ﻿@model LearningHub.Nhs.Auth.ViewModels.Sso.CreateUserViewModel
 @{
-    ViewBag.Title = "Registration";
-    Layout = "~/Views/Shared/_SsoLayout.cshtml";
+  ViewBag.Title = "Registration";
+  Layout = "~/Views/Shared/_SsoLayout.cshtml";
 }
 
-<div class="lh-container pt-3 pb-5">
-    <div class="sso-frame">
-        <div id="linkExisting" class="@(Model.ShowLinkUserForm ? "" : "d-none")">
-            <h2 class="my-5">Link your Learning Hub account with your organisation</h2>
+<div class="nhsuk-width-container app-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full nhsuk-u-padding-top-7 nhsuk-u-padding-bottom-5">
 
-            <p class="pb-4">The <strong>@Model.ClientName</strong> website has requested authorisation to access the Learning Hub.</p>
+      <div id="linkExisting" class="@(Model.ShowLinkUserForm ? "" : "d-none")">
+        <h1>Link your Learning Hub account with your organisation</h1>
 
-            <p class="pb-4">If you already have an account on the Learning Hub, you can link your existing Learning Hub account with your @Model.ClientName account by entering your username and password below.</p>
+        <p>The <strong>@Model.ClientName</strong> website has requested authorisation to access the Learning Hub.</p>
 
-            <p class="pb-4">When you select ‘Link my account’, the details you have entered will be sent to @Model.ClientName for approval.</p>
+        <p>If you already have an account on the Learning Hub, you can link your existing Learning Hub account with your @Model.ClientName account by entering your username and password below.</p>
 
-            <p class="pb-4">If you don’t have an existing Learning Hub account you can <a id="registrationLink" href="javascript:void(0)">create an account</a>.</p>
+        <p>When you select ‘Link my account’, the details you have entered will be sent to @Model.ClientName <strong>to link your accounts</strong>.</p>
 
-            <form action="/sso/link-user/@Model.ClientCode?state=@Model.ClientState" method="post" asp-antiforgery="true">
+        <p>If you don’t have an existing Learning Hub account you can <a id="registrationLink" href="javascript:void(0)">create an account</a>.</p>
 
-                @if (!string.IsNullOrWhiteSpace(Model.Error))
-                {
-                    <p class="text-danger my-4">@Model.Error</p>
-                }
+        <form action="/sso/link-user/@Model.ClientCode?state=@Model.ClientState" method="post" asp-antiforgery="true">
 
-                <div class="form-group mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Username)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoLinkUserForm.Username"><strong>Username</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Username)
-                        <input type="text" class="form-control mt-2" asp-for="SsoLinkUserForm.Username" aria-describedby="username"
-                               placeholder="Enter username" required>
-                    </div>
+          @if (!string.IsNullOrWhiteSpace(Model.Error))
+          {
+            <p class="text-danger my-4">@Model.Error</p>
+          }
+
+          <div class="form-group mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Username)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoLinkUserForm.Username"><strong>Username</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Username)
+              <input type="text" class="form-control mt-2" asp-for="SsoLinkUserForm.Username" aria-describedby="username"
+                     placeholder="Enter username" required>
+            </div>
+          </div>
+
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Password)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoLinkUserForm.Password"><strong>Password</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Password)
+              <input type="password" class="form-control mt-2" asp-for="SsoLinkUserForm.Password" aria-describedby="password"
+                     placeholder="Enter password" required>
+            </div>
+          </div>
+
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Consented)).HasInnerHtml ? "form-group--error" : "")">
+            @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Consented)
+            <div class="d-flex flex-row mt-2 p-4 terms-conditions">
+              <div>
+                @Html.CheckBoxFor(m => m.SsoLinkUserForm.Consented, new { @class = "sso-chk-tnc" })
+              </div>
+              <div class="pl-5 pr-4">
+                @Html.LabelFor(m => m.SsoLinkUserForm.Consented, @Model.TermsAndConditions)
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="nhsuk-button">Link my account</button>
+        </form>
+      </div>
+
+      <div id="registerUser" class="@(Model.ShowLinkUserForm ? "d-none" : "")">
+        <h2>Create an account</h2>
+
+        <p>Enter your details below to create a Learning Hub account and link it to your organisation.</p>
+
+        <p>When you select ‘Create linked account’, the details you have entered will be sent to @Model.ClientName for approval.</p>
+
+        <form action="/sso/register/@Model.ClientCode?state=@Model.ClientState" method="post" asp-antiforgery="true">
+
+          @if (!string.IsNullOrWhiteSpace(Model.Error))
+          {
+            <p class="text-danger my-4">@Model.Error</p>
+          }
+
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.FirstName)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoRegisterUserForm.FirstName"><strong>First name</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.FirstName)
+              <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.FirstName"
+                     aria-describedby="firstname" placeholder="Enter first name" required>
+            </div>
+          </div>
+
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LastName)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoRegisterUserForm.LastName"><strong>Last name</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LastName)
+              <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.LastName"
+                     aria-describedby="lastname" placeholder="Enter last name" required>
+            </div>
+          </div>
+
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.EmailAddress)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoRegisterUserForm.EmailAddress"><strong>Your work email address</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.EmailAddress)
+              <input type="email" class="form-control mt-2" asp-for="SsoRegisterUserForm.EmailAddress"
+                     aria-describedby="EmailAddress" placeholder="Enter work email address" required>
+            </div>
+          </div>
+
+          @if (Model.SsoRegisterUserForm.ShowStaffGroupOption)
+          {
+            <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.StaffGroupId)).HasInnerHtml ? "form-group--error" : "")">
+              <label asp-for="SsoRegisterUserForm.StaffGroupId"><strong>Staff group</strong></label>
+              <div>
+                @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.StaffGroupId)
+                @Html.DropDownListFor(m => m.SsoRegisterUserForm.StaffGroupId,
+              new SelectList(Model.SsoRegisterUserForm.StaffGroups, "Id", "Name", Model.SsoRegisterUserForm.StaffGroupId),
+              new { @class = "form-control mt-2" })
+              </div>
+            </div>
+          }
+          else
+          {
+            @Html.HiddenFor(m => m.SsoRegisterUserForm.StaffGroupId)
+          }
+
+          @if (Model.SsoRegisterUserForm.ShowJobRoleOption)
+          {
+            <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.JobRoleId)).HasInnerHtml ? "form-group--error" : "")">
+              <label asp-for="SsoRegisterUserForm.JobRoleId"><strong>Current role</strong></label>
+              <div>
+                @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.JobRoleId)
+                @Html.DropDownListFor(m => m.SsoRegisterUserForm.JobRoleId,
+              new SelectList(Model.SsoRegisterUserForm.JobRoles, "Id", "Name", Model.SsoRegisterUserForm.JobRoleId),
+              new { @class = "form-control mt-2" })
+              </div>
+            </div>
+          }
+          else
+          {
+            @Html.HiddenFor(m => m.SsoRegisterUserForm.JobRoleId)
+          }
+
+          @if (Model.SsoRegisterUserForm.ShowGradingOption)
+          {
+            <div class="form-group grade-form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.GradeId)).HasInnerHtml ? "form-group--error" : "")">
+              <label asp-for="SsoRegisterUserForm.GradeId">
+                <strong>Grade</strong>
+                <br /><small>You can find this on your payslip.</small>
+              </label>
+              <div>
+                @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.GradeId)
+                @Html.DropDownListFor(m => m.SsoRegisterUserForm.GradeId,
+              new SelectList(Model.SsoRegisterUserForm.Grades, "Id", "Name", Model.SsoRegisterUserForm.GradeId),
+              new { @class = "form-control mt-2" })
+              </div>
+            </div>
+          }
+          else
+          {
+            @Html.HiddenFor(m => m.SsoRegisterUserForm.GradeId)
+          }
+
+          <div id="professionalBody_container" class="d-none form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.MedicalCouncilNumber)).HasInnerHtml ? "form-group--error" : "")">
+            <label asp-for="SsoRegisterUserForm.MedicalCouncilNumber"><strong>Medical council number</strong></label>
+            <div>
+              @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.MedicalCouncilNumber)
+              <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.MedicalCouncilNumber"
+                     aria-describedby="MedicalCouncilNumber" placeholder="Enter medical council number">
+            </div>
+          </div>
+
+
+          @if (Model.SsoRegisterUserForm.ShowSpecialityOption)
+          {
+            <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.SpecialtyId)).HasInnerHtml ? "form-group--error" : "")">
+              <label asp-for="SsoRegisterUserForm.SpecialtyId"><strong>Primary Specialty</strong></label>
+              <div>
+                @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.SpecialtyId)
+                @Html.DropDownListFor(m => m.SsoRegisterUserForm.SpecialtyId,
+              new SelectList(Model.SsoRegisterUserForm.Specialties, "Id", "Name", Model.SsoRegisterUserForm.SpecialtyId),
+              new { @class = "form-control mt-2" })
+              </div>
+            </div>
+
+          }
+          else
+          {
+            @Html.HiddenFor(m => m.SsoRegisterUserForm.SpecialtyId)
+          }
+
+          @if (Model.SsoRegisterUserForm.ShowLocation)
+          {
+            <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LocationId)).HasInnerHtml ? "form-group--error" : "")">
+              <label for="Location">
+                <strong>Place of work</strong>
+                <br />
+                <small>Enter the name, postcode or Organisation Data Service (ODS) code of your place of work. Select the correct location from the list.</small>
+              </label>
+              <div>
+                @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LocationId)
+                <input type="text" class="d-none" asp-for="SsoRegisterUserForm.LocationId" required>
+                <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.Location"
+                       aria-describedby="location" placeholder="Type 2 or more characters to search...">
+                <small>Results may take a moment to load</small>
+                <div class="locationInfoSection">
+                  <small><a id="whyLocationInfo" class="collapsed" data-toggle="collapse" data-target="#locationInfo" aria-expanded="false" aria-controls="locationInfo" href="javascript:void(0)">Why do I need to provide details about where I work?</a></small><br />
+                  <small id="locationInfo" class="collapse">Information on your place of work will help us provide activity reports to evidence your learning.</small>
                 </div>
 
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Password)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoLinkUserForm.Password"><strong>Password</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Password)
-                        <input type="password" class="form-control mt-2" asp-for="SsoLinkUserForm.Password" aria-describedby="password"
-                               placeholder="Enter password" required>
-                    </div>
-                </div>
+              </div>
+            </div>
+          }
+          else
+          {
+            @Html.HiddenFor(m => m.SsoRegisterUserForm.LocationId)
+          }
 
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoLinkUserForm.Consented)).HasInnerHtml ? "form-group--error" : "")">
-                    @Html.ValidationMessageFor(m => m.SsoLinkUserForm.Consented)
-                    <div class="d-flex flex-row mt-2 p-4 terms-conditions">
-                        <div>
-                            @Html.CheckBoxFor(m => m.SsoLinkUserForm.Consented, new { @class = "sso-chk-tnc" })
-                        </div>
-                        <div class="pl-5 pr-4">
-                            @Html.LabelFor(m => m.SsoLinkUserForm.Consented, @Model.TermsAndConditions)
-                        </div>
-                    </div>
-                </div>
+          <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.Consented)).HasInnerHtml ? "form-group--error" : "")">
+            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.Consented)
+            <div class="d-flex flex-row mt-2 p-4 terms-conditions">
+              <div>
+                @Html.CheckBoxFor(m => m.SsoRegisterUserForm.Consented, new { @class = "sso-chk-tnc" })
+              </div>
+              <div class="pl-5 pr-4">
+                @Html.LabelFor(m => m.SsoRegisterUserForm.Consented, @Model.TermsAndConditions)
+              </div>
+            </div>
+          </div>
 
-                <button type="submit" class="sso-btn">Link my account</button>
-            </form>
-        </div>
+          <button type="submit" class="nhsuk-button">Create linked account</button>
+        </form>
+      </div>
 
-        <div id="registerUser" class="@(Model.ShowLinkUserForm ? "d-none" : "")">
-            <h2 class="my-5">Create an account</h2>
-
-            <p class="pb-4">Enter your details below to create a Learning Hub account and link it to your organisation.</p>
-
-            <p class="pb-4">When you select ‘Create linked account’, the details you have entered will be sent to @Model.ClientName for approval.</p>
-
-            <form action="/sso/register/@Model.ClientCode?state=@Model.ClientState" method="post" asp-antiforgery="true">
-
-                @if (!string.IsNullOrWhiteSpace(Model.Error))
-                {
-                    <p class="text-danger my-4">@Model.Error</p>
-                }
-
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.FirstName)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoRegisterUserForm.FirstName"><strong>First name</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.FirstName)
-                        <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.FirstName"
-                               aria-describedby="firstname" placeholder="Enter first name" required>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LastName)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoRegisterUserForm.LastName"><strong>Last name</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LastName)
-                        <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.LastName"
-                               aria-describedby="lastname" placeholder="Enter last name" required>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.EmailAddress)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoRegisterUserForm.EmailAddress"><strong>Your work email address</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.EmailAddress)
-                        <input type="email" class="form-control mt-2" asp-for="SsoRegisterUserForm.EmailAddress"
-                               aria-describedby="EmailAddress" placeholder="Enter work email address" required>
-                    </div>
-                </div>
-
-                @if (Model.SsoRegisterUserForm.ShowStaffGroupOption)
-                {
-                    <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.StaffGroupId)).HasInnerHtml ? "form-group--error" : "")">
-                        <label asp-for="SsoRegisterUserForm.StaffGroupId"><strong>Staff group</strong></label>
-                        <div>
-                            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.StaffGroupId)
-                            @Html.DropDownListFor(m => m.SsoRegisterUserForm.StaffGroupId,
-                                       new SelectList(Model.SsoRegisterUserForm.StaffGroups, "Id", "Name", Model.SsoRegisterUserForm.StaffGroupId),
-                                       new { @class = "form-control mt-2" })
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    @Html.HiddenFor(m => m.SsoRegisterUserForm.StaffGroupId)
-                }
-
-                @if (Model.SsoRegisterUserForm.ShowJobRoleOption)
-                {
-                    <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.JobRoleId)).HasInnerHtml ? "form-group--error" : "")">
-                        <label asp-for="SsoRegisterUserForm.JobRoleId"><strong>Current role</strong></label>
-                        <div>
-                            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.JobRoleId)
-                            @Html.DropDownListFor(m => m.SsoRegisterUserForm.JobRoleId,
-                                        new SelectList(Model.SsoRegisterUserForm.JobRoles, "Id", "Name", Model.SsoRegisterUserForm.JobRoleId),
-                                        new { @class = "form-control mt-2" })
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    @Html.HiddenFor(m => m.SsoRegisterUserForm.JobRoleId)
-                }
-
-                @if (Model.SsoRegisterUserForm.ShowGradingOption)
-                {
-                    <div class="form-group grade-form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.GradeId)).HasInnerHtml ? "form-group--error" : "")">
-                        <label asp-for="SsoRegisterUserForm.GradeId">
-                            <strong>Grade</strong>
-                            <br /><small>You can find this on your payslip.</small>
-                        </label>
-                        <div>
-                            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.GradeId)
-                            @Html.DropDownListFor(m => m.SsoRegisterUserForm.GradeId,
-                                        new SelectList(Model.SsoRegisterUserForm.Grades, "Id", "Name", Model.SsoRegisterUserForm.GradeId),
-                                        new { @class = "form-control mt-2" })
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    @Html.HiddenFor(m => m.SsoRegisterUserForm.GradeId)
-                }
-
-                <div id="professionalBody_container" class="d-none form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.MedicalCouncilNumber)).HasInnerHtml ? "form-group--error" : "")">
-                    <label asp-for="SsoRegisterUserForm.MedicalCouncilNumber"><strong>Medical council number</strong></label>
-                    <div>
-                        @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.MedicalCouncilNumber)
-                        <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.MedicalCouncilNumber"
-                               aria-describedby="MedicalCouncilNumber" placeholder="Enter medical council number">
-                    </div>
-                </div>
-
-
-                @if (Model.SsoRegisterUserForm.ShowSpecialityOption)
-                {
-                    <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.SpecialtyId)).HasInnerHtml ? "form-group--error" : "")">
-                        <label asp-for="SsoRegisterUserForm.SpecialtyId"><strong>Primary Specialty</strong></label>
-                        <div>
-                            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.SpecialtyId)
-                            @Html.DropDownListFor(m => m.SsoRegisterUserForm.SpecialtyId,
-                                        new SelectList(Model.SsoRegisterUserForm.Specialties, "Id", "Name", Model.SsoRegisterUserForm.SpecialtyId),
-                                        new { @class = "form-control mt-2" })
-                        </div>
-                    </div>
-
-                }
-                else
-                {
-                    @Html.HiddenFor(m => m.SsoRegisterUserForm.SpecialtyId)
-                }
-
-                @if (Model.SsoRegisterUserForm.ShowLocation)
-                {
-                    <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LocationId)).HasInnerHtml ? "form-group--error" : "")">
-                        <label for="Location">
-                            <strong>Place of work</strong>
-                            <br />
-                            <small>Enter the name, postcode or Organisation Data Service (ODS) code of your place of work. Select the correct location from the list.</small>
-                        </label>
-                        <div>
-                            @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.LocationId)
-                            <input type="text" class="d-none" asp-for="SsoRegisterUserForm.LocationId" required>
-                            <input type="text" class="form-control mt-2" asp-for="SsoRegisterUserForm.Location"
-                                   aria-describedby="location" placeholder="Type 2 or more characters to search...">
-                            <small>Results may take a moment to load</small>
-                            <div class="locationInfoSection">
-                                <small><a id="whyLocationInfo" class="collapsed" data-toggle="collapse" data-target="#locationInfo" aria-expanded="false" aria-controls="locationInfo" href="javascript:void(0)">Why do I need to provide details about where I work?</a></small><br />
-                                <small id="locationInfo" class="collapse">Information on your place of work will help us provide activity reports to evidence your learning.</small>
-                            </div>
-
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    @Html.HiddenFor(m => m.SsoRegisterUserForm.LocationId)
-                }
-
-                <div class="form-group mt-2 mb-5 @(((TagBuilder)Html.ValidationMessageFor(m => m.SsoRegisterUserForm.Consented)).HasInnerHtml ? "form-group--error" : "")">
-                    @Html.ValidationMessageFor(m => m.SsoRegisterUserForm.Consented)
-                    <div class="d-flex flex-row mt-2 p-4 terms-conditions">
-                        <div>
-                            @Html.CheckBoxFor(m => m.SsoRegisterUserForm.Consented, new { @class = "sso-chk-tnc" })
-                        </div>
-                        <div class="pl-5 pr-4">
-                            @Html.LabelFor(m => m.SsoRegisterUserForm.Consented, @Model.TermsAndConditions)
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit" class="sso-btn">Create linked account</button>
-            </form>
-        </div>
     </div>
+  </div>
 </div>
-
 @section Scripts
-{
-    <script src="~/js/typeahead.bundle.js"></script>
-    <script src="~/js/sso.js"></script>
+  {
+  <script src="~/js/typeahead.bundle.js"></script>
+  <script src="~/js/sso.js"></script>
 }
