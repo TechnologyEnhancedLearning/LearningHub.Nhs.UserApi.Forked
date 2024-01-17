@@ -334,6 +334,7 @@ namespace LearningHub.Nhs.Auth.Controllers
 
                 // Base _layout.cshtml template config
                 this.ViewData["AuthMainTitle"] = loginClientTemplate.AuthMainTitle;
+                this.ViewData["ClientUrl"] = loginClientTemplate.ClientUrl;
                 this.ViewData["ClientLogoUrl"] = loginClientTemplate.ClientLogoUrl;
                 this.ViewData["ClientLogoSrc"] = loginClientTemplate.ClientLogoSrc;
                 this.ViewData["ClientLogoAltText"] = loginClientTemplate.ClientLogoAltText;
@@ -380,7 +381,6 @@ namespace LearningHub.Nhs.Auth.Controllers
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;
-
                     if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
                     {
                         providers = providers.Where(provider => client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme)).ToList();
