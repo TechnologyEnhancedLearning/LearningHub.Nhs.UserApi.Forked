@@ -10,22 +10,6 @@ body {
     background-color: $nhsuk-grey-white;
 }
 
-header {
-    background-color: $nhsuk-blue;
-    height: 112px;
-    padding: 0 15px;
-}
-
-footer {
-    background-color: $nhsuk-blue;
-    height: 130px;
-    padding: 0 15px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
 a {
     text-decoration: underline;
 }

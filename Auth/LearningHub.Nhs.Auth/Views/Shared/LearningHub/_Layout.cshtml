@@ -38,6 +38,10 @@
   <header class="nhsuk-header" role="banner">
     <partial name="~/Views/Shared/LearningHub/_NavPartial.cshtml" />
   </header>
+  <div class="nhsuk-width-container app-width-container beta-banner">
+    <span class="beta-banner__beta-box">BETA</span>
+    <span class="beta-banner__text">This is a new platform - your <a href="@(settings.Value.SupportFeedbackForm)" target="_blank">feedback</a> will help us to improve it.</span>
+  </div>
   <div class="nhsuk-width-container app-width-container--full">
     <main role="main" id="maincontent" class="nhsuk-main-wrapper app-main-wrapper--no-padding nhsuk-bg-white">
       @RenderBody()
