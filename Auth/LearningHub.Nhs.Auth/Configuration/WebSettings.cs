@@ -55,5 +55,10 @@ namespace LearningHub.Nhs.Auth.Configuration
         /// Gets or sets the SupportForm.
         /// </summary>
         public string SupportForm { get; set; }
-    }
+
+        /// <summary>
+        /// Gets or sets the SupportFeedbackForm.
+        /// </summary>
+        public string SupportFeedbackForm { get; set; }
+  }
 }
