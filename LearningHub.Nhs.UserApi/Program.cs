@@ -2,7 +2,7 @@
 // Copyright (c) HEE.nhs.uk.
 // </copyright>
 
-#pragma warning disable SA1200 // Using directives should be placed correctly 
+#pragma warning disable SA1200 // Using directives should be placed correctly
 using System;
 using LearningHub.Nhs.UserApi;
 using LearningHub.Nhs.UserApi.Middleware;
