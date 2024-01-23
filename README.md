@@ -1,4 +1,4 @@
-# Introduction 
+# Introduction
 This is the official open source repository for the [Learning Hub](https://learninghub.nhs.uk/) user profile and authentication service.
 
 This repository is used to provide user authentication for the main [Learning Hub repository](https://github.com/TechnologyEnhancedLearning/LearningHub.Nhs.WebUI).
@@ -148,7 +148,7 @@ Go to: **Tools > NuGet Package Manager > Manage NuGet Packages for Solution > Co
 
 Click the **+** button to create a new package source with name `LHPackages` and source: https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json
 
-## Rebuild and run
+## Rebuild and run 
 
 1. Rebuild the solution
 2. Set **LearningHub.Nhs.WebUI** as the startup Project
