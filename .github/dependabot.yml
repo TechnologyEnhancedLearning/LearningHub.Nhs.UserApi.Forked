@@ -27,18 +27,6 @@ updates:
       #- dependency-name: "*"
       #  update-types: ["version-update:semver-patch"]
     
-  # Configuration for npm UserApi
-  - package-ecosystem: "npm" 
-    directory: "LearningHub.Nhs.UserApi/" # Location of package manifests
-    schedule:
-      interval: "daily"
-    target-branch: "Automatic_version_update_dependabot"
-    #  - "dependencies"
-    open-pull-requests-limit: 1
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-
   # Configuration for npm Auth
   - package-ecosystem: "npm" 
     directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
