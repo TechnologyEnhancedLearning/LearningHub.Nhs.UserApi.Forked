@@ -6,10 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" 
-    directory: "LearningHub.Nhs.UserApi/" # Location of package manifests
+    directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 1
+    open-pull-requests-limit: 2
     target-branch: "Automatic_version_update_dependabot"
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
@@ -32,12 +32,12 @@ updates:
     
   # Configuration for npm Auth
   - package-ecosystem: "npm" 
-    directory: "LearningHub.Nhs.Auth/" # Location of package manifests
+    directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
     schedule:
       interval: "daily"
     target-branch: "Automatic_version_update_dependabot"
     #  - "dependencies"
-    open-pull-requests-limit: 1
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
