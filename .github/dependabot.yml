@@ -24,7 +24,7 @@ updates:
       - dependency-name: "Selenium.WebDriver.ChromeDriver"
         versions: ">=113.0.5672.1278" # Recommended version
       - dependency-name: "*"
-        file-path: "Auth/LearningHub.Nhs.Auth.Tests/LearningHub.Nhs.Auth.Tests.csproj"
+        match: "Auth/LearningHub.Nhs.Auth.Tests/LearningHub.Nhs.Auth.Tests.csproj"
       # For all packages, ignore all patch updates
       #- dependency-name: "*"
       #  update-types: ["version-update:semver-patch"]
