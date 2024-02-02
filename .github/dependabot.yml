@@ -6,7 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" 
-    directory: "Auth/" # Location of package manifests
+    directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
     schedule:
       interval: "daily"
     open-pull-requests-limit: 1
