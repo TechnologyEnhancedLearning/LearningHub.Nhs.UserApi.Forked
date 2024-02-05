@@ -5,25 +5,14 @@
 
 version: 2
 updates:
-  - package-ecosystem: "nuget" 
+   # Configuration for npm Auth
+  - package-ecosystem: "npm" 
     directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 1
     target-branch: "Automatic_version_update_dependabot"
+    #  - "dependencies"
+    open-pull-requests-limit: 1
     ignore:
-      # Ignore updates to packages that start with 'Wildcards'
-      - dependency-name: "Microsoft.FeatureManagement.AspNetCore*"
-      - dependency-name: "Microsoft.TestPlatform.TestHost*"
-      # Ignore some updates to the package
-      - dependency-name: "Microsoft.VisualStudio.Web.CodeGeneration.Design"
-        versions: [">7.0.0"]
-      - dependency-name: "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-        versions: [">7.0.0"]
-      - dependency-name: "Microsoft.AspNetCore.Mvc.Testing"
-        versions: [">7.0.0"]
-      - dependency-name: "Selenium.WebDriver.ChromeDriver"
-        versions: ">=113.0.5672.1278" # Recommended version      
-      # For all packages, ignore all patch updates
-      #- dependency-name: "*"
-      #  update-types: ["version-update:semver-patch"]
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
