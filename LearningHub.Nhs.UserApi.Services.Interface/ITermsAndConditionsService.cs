@@ -1,8 +1,4 @@
-﻿// <copyright file="ITermsAndConditionsService.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.Interface
+﻿namespace LearningHub.Nhs.UserApi.Services.Interface
 {
     using System.Threading.Tasks;
     using elfhHub.Nhs.Models.Common;

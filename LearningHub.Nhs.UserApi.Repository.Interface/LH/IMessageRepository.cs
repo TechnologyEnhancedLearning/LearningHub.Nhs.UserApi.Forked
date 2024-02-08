@@ -1,8 +1,4 @@
-﻿// <copyright file="IMessageRepository.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.Interface.LH
+﻿namespace LearningHub.Nhs.UserApi.Repository.Interface.LH
 {
   using System.Threading.Tasks;
 

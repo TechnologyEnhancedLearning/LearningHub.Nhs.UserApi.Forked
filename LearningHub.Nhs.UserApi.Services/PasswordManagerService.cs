@@ -1,8 +1,4 @@
-﻿// <copyright file="PasswordManagerService.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services
+﻿namespace LearningHub.Nhs.UserApi.Services
 {
     using System;
     using System.Collections.Generic;

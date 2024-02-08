@@ -1,8 +1,4 @@
-﻿// <copyright file="LearningHubProfileService.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.UserServices
+﻿namespace LearningHub.Nhs.Auth.UserServices
 {
     using System.Collections.Generic;
     using System.Security.Claims;

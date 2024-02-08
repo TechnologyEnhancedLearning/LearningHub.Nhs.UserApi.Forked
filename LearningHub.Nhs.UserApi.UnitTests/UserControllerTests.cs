@@ -1,7 +1,3 @@
-// <copyright file="UserControllerTests.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
 namespace LearningHub.Nhs.UserApi.UnitTests
 {
     using System.Security.Claims;

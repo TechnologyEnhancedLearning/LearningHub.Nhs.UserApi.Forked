@@ -1,8 +1,4 @@
-﻿// <copyright file="LoginWizardStageRepository.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository
+﻿namespace LearningHub.Nhs.UserApi.Repository
 {
     using elfhHub.Nhs.Models.Entities;
     using LearningHub.Nhs.UserApi.Repository.Interface;

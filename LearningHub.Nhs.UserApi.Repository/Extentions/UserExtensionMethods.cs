@@ -1,8 +1,4 @@
-﻿// <copyright file="UserExtensionMethods.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.Extentions
+﻿namespace LearningHub.Nhs.UserApi.Repository.Extentions
 {
     using System;
     using System.Linq;

@@ -1,8 +1,4 @@
-﻿// <copyright file="UserPasswordValidationTokenMap.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.ElfhMap
+﻿namespace LearningHub.Nhs.UserApi.Repository.ElfhMap
 {
     using elfhHub.Nhs.Models.Entities;
     using Microsoft.EntityFrameworkCore;

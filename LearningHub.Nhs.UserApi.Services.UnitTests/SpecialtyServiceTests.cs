@@ -1,8 +1,4 @@
-﻿// <copyright file="SpecialtyServiceTests.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.UnitTests
+﻿namespace LearningHub.Nhs.UserApi.Services.UnitTests
 {
     using System;
     using System.Collections.Generic;

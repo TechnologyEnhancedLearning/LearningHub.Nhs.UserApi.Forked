@@ -1,8 +1,4 @@
-﻿// <copyright file="ExternalSystemService.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Services
+﻿namespace LearningHub.Nhs.Auth.Services
 {
     using System.Threading.Tasks;
     using LearningHub.Nhs.Auth.Interfaces;
