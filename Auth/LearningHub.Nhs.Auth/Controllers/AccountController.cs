@@ -145,6 +145,12 @@ namespace LearningHub.Nhs.Auth.Controllers
                 }
             }
 
+            if (context == null)
+            {
+                this.ModelState.AddModelError(string.Empty, "Invalid request");
+                goto showFormWithError;
+            }
+
             if (this.ModelState.IsValid)
             {
                 // validate username/password
@@ -207,6 +213,8 @@ namespace LearningHub.Nhs.Auth.Controllers
                 this.ModelState.AddModelError(nameof(model.Password), "Enter your password again");
                 this.ModelState.AddModelError(string.Empty, loginResult.ErrorMessage);
             }
+
+             showFormWithError:
 
             // something went wrong, show form with error
             var vm = await this.BuildLoginViewModelAsync(model);
@@ -396,7 +404,7 @@ namespace LearningHub.Nhs.Auth.Controllers
                 Username = context?.LoginHint,
                 ExternalProviders = providers.ToArray(),
                 LoginClientTemplate = loginClientTemplate ?? new LoginClientTemplate(),
-                ClientId = context.Client.ClientId,
+                ClientId = context?.Client.ClientId,
             };
         }
 
