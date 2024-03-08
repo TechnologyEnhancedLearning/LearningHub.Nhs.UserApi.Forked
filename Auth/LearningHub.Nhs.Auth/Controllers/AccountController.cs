@@ -45,6 +45,7 @@ namespace LearningHub.Nhs.Auth.Controllers
         private readonly IAuthenticationSchemeProvider schemeProvider;
         private readonly LearningHubAuthConfig authConfig;
         private readonly WebSettings webSettings;
+        private readonly ILogger logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
@@ -55,6 +56,7 @@ namespace LearningHub.Nhs.Auth.Controllers
         /// <param name="events">events parameter.</param>
         /// <param name="userService">userService parameter.</param>
         /// <param name="webSettings">webSettings parameter.</param>
+        /// <param name="logger">ILogger instance.</param>
         /// <param name="authConfig">Auth service config.</param>
         /// <param name="cacheService">Cacje service config.</param>
         public AccountController(
@@ -64,6 +66,7 @@ namespace LearningHub.Nhs.Auth.Controllers
             IEventService events,
             IUserService userService,
             WebSettings webSettings,
+            ILogger<AccountController> logger,
             IOptions<LearningHubAuthConfig> authConfig,
             ICacheService cacheService)
             : base(userService, events, clientStore, webSettings, cacheService)
@@ -72,6 +75,7 @@ namespace LearningHub.Nhs.Auth.Controllers
             this.schemeProvider = schemeProvider;
             this.authConfig = authConfig?.Value;
             this.webSettings = webSettings;
+            this.logger = logger;
     }
 
         /// <summary>
@@ -336,7 +340,7 @@ namespace LearningHub.Nhs.Auth.Controllers
         {
             var context = await this.interaction.GetAuthorizationContextAsync(returnUrl);
             LoginClientTemplate loginClientTemplate = null;
-            if (context?.Client.ClientId != null && this.authConfig.IdsClients.ContainsKey(context.Client.ClientId))
+            if (context?.Client?.ClientId != null && this.authConfig.IdsClients.ContainsKey(context.Client.ClientId))
             {
                 loginClientTemplate = this.authConfig.IdsClients[context.Client.ClientId];
 
@@ -383,7 +387,7 @@ namespace LearningHub.Nhs.Auth.Controllers
 
             var allowLocal = true;
 
-            if (context?.Client.ClientId != null)
+            if (context?.Client?.ClientId != null)
             {
                 var client = await this.ClientStore.FindEnabledClientByIdAsync(context.Client.ClientId);
                 if (client != null)
@@ -396,6 +400,12 @@ namespace LearningHub.Nhs.Auth.Controllers
                 }
             }
 
+            if (context == null || loginClientTemplate == null)
+            {
+                string message = context == null ? "context" : loginClientTemplate == null ? "clientTemplate" : string.Empty;
+                this.logger.LogWarning($"return url has no {message} : {returnUrl}");
+            }
+
             return new LoginViewModel
             {
                 AllowRememberLogin = loginClientTemplate?.AllowRememberLogin ?? AccountOptions.AllowRememberLogin,
@@ -404,7 +414,7 @@ namespace LearningHub.Nhs.Auth.Controllers
                 Username = context?.LoginHint,
                 ExternalProviders = providers.ToArray(),
                 LoginClientTemplate = loginClientTemplate ?? new LoginClientTemplate(),
-                ClientId = context?.Client.ClientId,
+                ClientId = context?.Client?.ClientId,
             };
         }
 
