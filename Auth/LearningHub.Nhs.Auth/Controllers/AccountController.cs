@@ -336,7 +336,7 @@ namespace LearningHub.Nhs.Auth.Controllers
         {
             var context = await this.interaction.GetAuthorizationContextAsync(returnUrl);
             LoginClientTemplate loginClientTemplate = null;
-            if (context?.Client.ClientId != null && this.authConfig.IdsClients.ContainsKey(context.Client.ClientId))
+            if (context?.Client?.ClientId != null && this.authConfig.IdsClients.ContainsKey(context.Client.ClientId))
             {
                 loginClientTemplate = this.authConfig.IdsClients[context.Client.ClientId];
 
@@ -383,7 +383,7 @@ namespace LearningHub.Nhs.Auth.Controllers
 
             var allowLocal = true;
 
-            if (context?.Client.ClientId != null)
+            if (context?.Client?.ClientId != null)
             {
                 var client = await this.ClientStore.FindEnabledClientByIdAsync(context.Client.ClientId);
                 if (client != null)
@@ -404,7 +404,7 @@ namespace LearningHub.Nhs.Auth.Controllers
                 Username = context?.LoginHint,
                 ExternalProviders = providers.ToArray(),
                 LoginClientTemplate = loginClientTemplate ?? new LoginClientTemplate(),
-                ClientId = context?.Client.ClientId,
+                ClientId = context?.Client?.ClientId,
             };
         }
 
