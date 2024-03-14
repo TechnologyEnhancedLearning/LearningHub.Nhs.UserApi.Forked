@@ -1,8 +1,4 @@
-﻿// <copyright file="QuerystringHelper.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Helpers
+﻿namespace LearningHub.Nhs.UserApi.Helpers
 {
     /// <summary>
     /// The querystring helper.

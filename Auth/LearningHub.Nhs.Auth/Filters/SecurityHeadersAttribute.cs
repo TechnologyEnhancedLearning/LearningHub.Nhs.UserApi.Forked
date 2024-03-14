@@ -1,8 +1,4 @@
-﻿// <copyright file="SecurityHeadersAttribute.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Filters
+﻿namespace LearningHub.Nhs.Auth.Filters
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;

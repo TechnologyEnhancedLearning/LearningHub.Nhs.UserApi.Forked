@@ -1,8 +1,4 @@
-﻿// <copyright file="ElfhHubDbContextOptions.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository
+﻿namespace LearningHub.Nhs.UserApi.Repository
 {
     using System.Collections.Generic;
     using LearningHub.Nhs.UserApi.Repository.ElfhMap;

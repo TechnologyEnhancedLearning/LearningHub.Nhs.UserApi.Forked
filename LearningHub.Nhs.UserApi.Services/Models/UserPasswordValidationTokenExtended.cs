@@ -1,8 +1,4 @@
-﻿// <copyright file="UserPasswordValidationTokenExtended.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.Models
+﻿namespace LearningHub.Nhs.UserApi.Services.Models
 {
     using elfhHub.Nhs.Models.Entities;
 

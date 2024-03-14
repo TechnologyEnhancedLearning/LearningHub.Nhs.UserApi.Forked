@@ -1,8 +1,4 @@
-﻿// <copyright file="GrantsViewModel.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Models.Grants
+﻿namespace LearningHub.Nhs.Auth.Models.Grants
 {
     using System;
     using System.Collections.Generic;

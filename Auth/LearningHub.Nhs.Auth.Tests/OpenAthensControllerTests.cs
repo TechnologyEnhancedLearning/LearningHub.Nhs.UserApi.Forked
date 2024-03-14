@@ -1,8 +1,4 @@
-﻿// <copyright file="OpenAthensControllerTests.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Tests
+﻿namespace LearningHub.Nhs.Auth.Tests
 {
     using System;
     using System.Threading.Tasks;

@@ -1,8 +1,4 @@
-﻿// <copyright file="UtilityHelper.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Helpers
+﻿namespace LearningHub.Nhs.Auth.Helpers
 {
     using System;
     using System.Text;

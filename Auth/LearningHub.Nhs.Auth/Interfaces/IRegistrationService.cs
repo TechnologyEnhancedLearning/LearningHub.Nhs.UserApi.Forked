@@ -1,8 +1,4 @@
-﻿// <copyright file="IRegistrationService.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Interfaces
+﻿namespace LearningHub.Nhs.Auth.Interfaces
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
