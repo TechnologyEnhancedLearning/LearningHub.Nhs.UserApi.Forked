@@ -5,9 +5,11 @@
     using System.Linq;
     using System.Threading.Tasks;
     using elfhHub.Nhs.Models.Common;
+    using LearningHub.Nhs.UserApi.Helpers;
     using LearningHub.Nhs.UserApi.Services.Interface;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// The job role controller.
@@ -100,7 +102,7 @@
         [Route("GetPagedFilteredWithStaffGroup/{filter}/{page}/{pageSize}")]
         public async Task<Tuple<int, List<JobRoleBasicViewModel>>> GetPagedFilteredWithStaffGroup(string filter, int page, int pageSize)
         {
-            var list = await this.jobRoleService.GetFilteredWithStaffGroupAsync(filter);
+            var list = await this.jobRoleService.GetFilteredWithStaffGroupAsync(filter.DecodeParameter());
             int total = list.Count;
             var pagedList = list.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             return new Tuple<int, List<JobRoleBasicViewModel>>(total, pagedList);
