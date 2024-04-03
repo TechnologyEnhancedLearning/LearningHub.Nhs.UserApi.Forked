@@ -1,8 +1,4 @@
-﻿// <copyright file="RedirectViewModel.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Models.Account
+﻿namespace LearningHub.Nhs.Auth.Models.Account
 {
     /// <summary>
     /// The redirect model.

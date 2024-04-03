@@ -1,8 +1,4 @@
-﻿// <copyright file="TermsAndConditionsController.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Controllers
+﻿namespace LearningHub.Nhs.UserApi.Controllers
 {
     using System.Threading.Tasks;
     using elfhHub.Nhs.Models.Common;

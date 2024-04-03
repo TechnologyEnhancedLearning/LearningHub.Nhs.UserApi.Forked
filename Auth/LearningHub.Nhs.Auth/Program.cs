@@ -1,8 +1,4 @@
-﻿// <copyright file="Program.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-#pragma warning disable SA1200 // Using directives should be placed correctly
+﻿#pragma warning disable SA1200 // Using directives should be placed correctly
 using IdentityServer4.Extensions;
 using LearningHub.Nhs.Auth;
 using LearningHub.Nhs.Auth.Middleware;

@@ -1,8 +1,4 @@
-﻿// <copyright file="MustBeTrueAttribute.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.ViewModels
+﻿namespace LearningHub.Nhs.Auth.ViewModels
 {
     using System;
     using System.Collections.Generic;

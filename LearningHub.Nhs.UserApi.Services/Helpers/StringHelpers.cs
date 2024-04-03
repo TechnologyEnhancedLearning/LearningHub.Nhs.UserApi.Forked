@@ -1,8 +1,4 @@
-﻿// <copyright file="StringHelpers.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.Helpers
+﻿namespace LearningHub.Nhs.UserApi.Services.Helpers
 {
     using System.Linq;
     using System.Threading;

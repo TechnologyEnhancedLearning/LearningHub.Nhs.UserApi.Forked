@@ -1,8 +1,4 @@
-﻿// <copyright file="ElfhRedisCache.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services
+﻿namespace LearningHub.Nhs.UserApi.Services
 {
     using LearningHub.Nhs.UserApi.Services.Interface;
     using Microsoft.Extensions.Caching.Redis;

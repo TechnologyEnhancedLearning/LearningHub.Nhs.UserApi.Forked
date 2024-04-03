@@ -1,8 +1,4 @@
-﻿// <copyright file="GradeController.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Controllers
+﻿namespace LearningHub.Nhs.UserApi.Controllers
 {
     using System;
     using System.Collections.Generic;
