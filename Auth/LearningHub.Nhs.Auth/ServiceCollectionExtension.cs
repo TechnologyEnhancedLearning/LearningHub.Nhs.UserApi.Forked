@@ -145,7 +145,7 @@
             services.AddDistributedCache(opt =>
             {
                 opt.RedisConnectionString = configuration.GetConnectionString("Redis");
-                opt.KeyPrefix = $"{envPrefix}_WebUI";
+                opt.KeyPrefix = $"{envPrefix}_Auth";
                 opt.DefaultExpiryInMinutes = 60;
             });
         }

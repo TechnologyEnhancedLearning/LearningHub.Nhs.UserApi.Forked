@@ -125,11 +125,6 @@
         /// </exception>
         public async Task Login(string clientId, string origin, string returnUrl)
         {
-            if (string.IsNullOrWhiteSpace(clientId) || string.IsNullOrWhiteSpace(origin))
-            {
-                throw new Exception("ClientId or origin are empty.");
-            }
-
             string oalhClient;
             try
             {
@@ -140,33 +135,26 @@
                 oalhClient = string.Empty;
             }
 
-            if (string.IsNullOrWhiteSpace(oalhClient))
+            if (!string.IsNullOrWhiteSpace(clientId) && !string.IsNullOrWhiteSpace(origin) && !string.IsNullOrWhiteSpace(oalhClient) && $"https://{oalhClient}".StartsWith(origin, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception("No OA LH client found.");
-            }
-
-            if (!$"https://{oalhClient}".StartsWith(origin, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new Exception("Invalid origin");
-            }
-
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                this.Response.Cookies.Append(
-                ClientReturnUrlKey,
-                returnUrl,
-                new CookieOptions
+                if (!string.IsNullOrWhiteSpace(returnUrl))
                 {
-                    Expires = DateTimeOffset.Now.AddMinutes(5),
-                    SameSite = SameSiteMode.None,
-                    HttpOnly = true,
-                    Secure = true,
-                });
-            }
+                    this.Response.Cookies.Append(
+                    ClientReturnUrlKey,
+                    returnUrl,
+                    new CookieOptions
+                    {
+                        Expires = DateTimeOffset.Now.AddMinutes(5),
+                        SameSite = SameSiteMode.None,
+                        HttpOnly = true,
+                        Secure = true,
+                    });
+                }
 
-            var internalReturnUrl = $"/openathens/oacallback?clientId={clientId}";
-            var authProps = new AuthenticationProperties { RedirectUri = internalReturnUrl };
-            await this.HttpContext.ChallengeAsync("oidc_oa", authProps);
+                var internalReturnUrl = $"/openathens/oacallback?clientId={clientId}";
+                var authProps = new AuthenticationProperties { RedirectUri = internalReturnUrl };
+                await this.HttpContext.ChallengeAsync("oidc_oa", authProps);
+            }
 
             // return Content("Route is working");
         }
