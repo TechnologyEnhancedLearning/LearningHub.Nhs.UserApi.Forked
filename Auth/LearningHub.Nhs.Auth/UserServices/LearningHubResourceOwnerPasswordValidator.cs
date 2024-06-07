@@ -1,8 +1,4 @@
-﻿// <copyright file="LearningHubResourceOwnerPasswordValidator.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.UserServices
+﻿namespace LearningHub.Nhs.Auth.UserServices
 {
     using System.Threading.Tasks;
     using IdentityModel;

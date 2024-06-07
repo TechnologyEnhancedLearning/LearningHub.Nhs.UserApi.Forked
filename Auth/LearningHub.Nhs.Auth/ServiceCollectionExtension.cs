@@ -1,8 +1,4 @@
-﻿// <copyright file="ServiceCollectionExtension.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth
+﻿namespace LearningHub.Nhs.Auth
 {
     using System;
     using System.Security.Cryptography.X509Certificates;

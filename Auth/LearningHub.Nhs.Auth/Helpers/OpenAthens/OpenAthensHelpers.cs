@@ -1,8 +1,4 @@
-﻿// <copyright file="OpenAthensHelpers.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Helpers.OpenAthens
+﻿namespace LearningHub.Nhs.Auth.Helpers.OpenAthens
 {
     using System;
     using System.Collections.Generic;

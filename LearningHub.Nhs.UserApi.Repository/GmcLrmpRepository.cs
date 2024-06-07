@@ -1,8 +1,4 @@
-﻿// <copyright file="GmcLrmpRepository.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository
+﻿namespace LearningHub.Nhs.UserApi.Repository
 {
     using System.Threading.Tasks;
     using elfhHub.Nhs.Models.Entities;

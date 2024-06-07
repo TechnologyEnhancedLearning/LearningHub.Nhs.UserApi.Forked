@@ -1,8 +1,4 @@
-﻿// <copyright file="ElfhCacheSettings.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Shared.Configuration
+﻿namespace LearningHub.Nhs.UserApi.Shared.Configuration
 {
     /// <summary>
     /// The ELFH cache settings.

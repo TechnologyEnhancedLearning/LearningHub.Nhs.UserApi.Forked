@@ -1,8 +1,4 @@
-﻿// <copyright file="OpenAthensController.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Controllers
+﻿namespace LearningHub.Nhs.Auth.Controllers
 {
     using System;
     using System.Collections.Generic;

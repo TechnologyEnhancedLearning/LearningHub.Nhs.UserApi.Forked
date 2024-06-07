@@ -1,8 +1,4 @@
-﻿// <copyright file="AttributeMap.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.ElfhMap
+﻿namespace LearningHub.Nhs.UserApi.Repository.ElfhMap
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;

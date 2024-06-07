@@ -1,8 +1,4 @@
-﻿// <copyright file="MedicalCouncilServiceTests.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.UnitTests
+﻿namespace LearningHub.Nhs.UserApi.Services.UnitTests
 {
     using System.Threading.Tasks;
     using elfhHub.Nhs.Models.Entities;

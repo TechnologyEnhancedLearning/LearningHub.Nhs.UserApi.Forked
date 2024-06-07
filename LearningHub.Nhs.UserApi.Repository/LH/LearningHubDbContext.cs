@@ -1,8 +1,4 @@
-﻿// <copyright file="LearningHubDbContext.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.LH
+﻿namespace LearningHub.Nhs.UserApi.Repository.LH
 {
     using LearningHub.Nhs.Models.Entities;
     using LearningHub.Nhs.Models.Entities.External;

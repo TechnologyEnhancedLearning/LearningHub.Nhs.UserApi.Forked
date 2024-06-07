@@ -1,7 +1,3 @@
-// <copyright file="AuthenticationServiceTests.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
 namespace LearningHub.Nhs.UserApi.Services.UnitTests
 {
     using elfhHub.Nhs.Models.Entities;
