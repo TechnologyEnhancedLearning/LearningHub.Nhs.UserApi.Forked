@@ -1,8 +1,4 @@
-﻿// <copyright file="RegisterUserViewModel.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.ViewModels.Sso
+﻿namespace LearningHub.Nhs.Auth.ViewModels.Sso
 {
     using System;
     using System.Collections.Generic;

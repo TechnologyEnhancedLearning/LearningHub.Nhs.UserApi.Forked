@@ -1,8 +1,4 @@
-﻿// <copyright file="LearningHubDbContextOptions.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.LH
+﻿namespace LearningHub.Nhs.UserApi.Repository.LH
 {
     using System.Collections.Generic;
     using LearningHub.Nhs.UserApi.Repository.LHMap;

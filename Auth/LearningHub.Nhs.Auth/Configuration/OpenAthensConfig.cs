@@ -1,8 +1,4 @@
-﻿// <copyright file="OpenAthensConfig.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Configuration
+﻿namespace LearningHub.Nhs.Auth.Configuration
 {
     /// <summary>
     /// The open athens config.

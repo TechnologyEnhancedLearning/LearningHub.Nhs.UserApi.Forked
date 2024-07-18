@@ -1,8 +1,4 @@
-﻿// <copyright file="BaseEntityMap.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository.LHMap
+﻿namespace LearningHub.Nhs.UserApi.Repository.LHMap
 {
     using LearningHub.Nhs.Models.Entities;
     using Microsoft.EntityFrameworkCore;

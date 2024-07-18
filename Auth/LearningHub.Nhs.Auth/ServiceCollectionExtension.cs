@@ -1,8 +1,4 @@
-﻿// <copyright file="ServiceCollectionExtension.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth
+﻿namespace LearningHub.Nhs.Auth
 {
     using System;
     using System.Security.Cryptography.X509Certificates;
@@ -149,7 +145,7 @@ namespace LearningHub.Nhs.Auth
             services.AddDistributedCache(opt =>
             {
                 opt.RedisConnectionString = configuration.GetConnectionString("Redis");
-                opt.KeyPrefix = $"{envPrefix}_WebUI";
+                opt.KeyPrefix = $"{envPrefix}_Auth";
                 opt.DefaultExpiryInMinutes = 60;
             });
         }

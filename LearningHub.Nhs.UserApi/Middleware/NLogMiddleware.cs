@@ -1,8 +1,4 @@
-﻿// <copyright file="NLogMiddleware.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Middleware
+﻿namespace LearningHub.Nhs.UserApi.Middleware
 {
     using System.Threading.Tasks;
     using LearningHub.Nhs.Models.Extensions;

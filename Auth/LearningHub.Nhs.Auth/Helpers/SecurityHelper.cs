@@ -1,8 +1,4 @@
-﻿// <copyright file="SecurityHelper.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-/*
+﻿/*
   https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rfc2898derivebytes?view=net-5.0
   Implements password-based key derivation functionality, PBKDF2, by using a pseudo-random number generator based on HMACSHA1.
 

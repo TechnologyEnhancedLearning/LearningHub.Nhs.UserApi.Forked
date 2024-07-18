@@ -1,8 +1,4 @@
-﻿// <copyright file="UserExternalSystemRepository.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Repository
+﻿namespace LearningHub.Nhs.UserApi.Repository
 {
     using System.Linq;
     using System.Threading.Tasks;

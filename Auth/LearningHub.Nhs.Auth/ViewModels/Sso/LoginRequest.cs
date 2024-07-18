@@ -1,8 +1,4 @@
-﻿// <copyright file="LoginRequest.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.ViewModels.Sso
+﻿namespace LearningHub.Nhs.Auth.ViewModels.Sso
 {
     using System.ComponentModel.DataAnnotations;
 

@@ -1,8 +1,4 @@
-﻿// <copyright file="PasswordAtLeastOneNumeric.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Services.Models
+﻿namespace LearningHub.Nhs.UserApi.Services.Models
 {
     /// <summary>
     /// The password at least one numeric.

@@ -1,8 +1,4 @@
-﻿// <copyright file="UserIncludeCollectionsEnum.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Shared
+﻿namespace LearningHub.Nhs.UserApi.Shared
 {
     /// <summary>
     /// The user include collections.

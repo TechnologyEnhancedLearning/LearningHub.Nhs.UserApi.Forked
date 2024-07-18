@@ -1,8 +1,4 @@
-﻿// <copyright file="UserBasicViewModel.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.Auth.Models
+﻿namespace LearningHub.Nhs.Auth.Models
 {
     using System;
     using System.Collections.Generic;

@@ -1,8 +1,4 @@
-﻿// <copyright file="AuthorizeOrCallFromLHHandler.cs" company="HEE.nhs.uk">
-// Copyright (c) HEE.nhs.uk.
-// </copyright>
-
-namespace LearningHub.Nhs.UserApi.Authentication
+﻿namespace LearningHub.Nhs.UserApi.Authentication
 {
     using System.Linq;
     using System.Threading.Tasks;
