@@ -317,6 +317,7 @@
             if (medicalCouncilId == 0 || string.IsNullOrEmpty(medicalCouncilNumber))
             {
                 // Generate random username using Lastname
+                lastName = string.Concat(lastName.Where(c => !char.IsWhiteSpace(c)));
                 string usernameStart = lastName.StripUnicodeCharactersFromString().Trim();
                 if (usernameStart.Length > 5)
                 {
