@@ -26,12 +26,14 @@
             {
                 new ApiResource("learninghubapi", "Learning Hub API") { Scopes = new List<string> { "learninghubapi", }, },
                 new ApiResource("userapi", "User API") { Scopes = new List<string> { "userapi" } },
+                new ApiResource("learningcredentialsapi", "Learning Credentials API") { Scopes = new List<string> { "learningcredentialsapi" } },
             };
 
             this.apiScopes = new[]
             {
                 new ApiScope("learninghubapi", "Access Learning Hub API"),
                 new ApiScope("userapi", "Access User API"),
+                new ApiScope("learningcredentialsapi", "Learning Credentials API"),
             };
 
             this.identityResources = new[]
