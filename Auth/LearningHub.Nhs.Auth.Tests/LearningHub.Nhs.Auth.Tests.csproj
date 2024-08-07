@@ -10,7 +10,7 @@
   
   <ItemGroup>
     <PackageReference Include="elfhHub.Nhs.Models" Version="3.0.8" />
-    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.25" />
+    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.36" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.0.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
