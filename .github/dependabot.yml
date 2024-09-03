@@ -23,6 +23,10 @@ updates:
         versions: [">7.0.0"]
       - dependency-name: "Selenium.WebDriver.ChromeDriver"
         versions: ">=113.0.5672.1278" # Recommended version
+      - dependency-name: "elfhHub.Nhs.Models"
+      - dependency-name: "LearningHub.Nhs.Models"
+      - dependency-name: "LearningHub.Nhs.Caching"
+      - dependency-name: "NHSUKViewComponents.Web"
       # For all packages, ignore all patch updates
       #- dependency-name: "*"
       #  update-types: ["version-update:semver-patch"]
