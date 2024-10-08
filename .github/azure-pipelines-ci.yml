@@ -24,7 +24,7 @@ jobs:
   - task: NodeTool@0
     displayName: Use Node 12.19
     inputs:
-      versionSpec: 12.19
+      versionSpec: 14
   - task: Npm@1
     displayName: npm custom
     inputs:
