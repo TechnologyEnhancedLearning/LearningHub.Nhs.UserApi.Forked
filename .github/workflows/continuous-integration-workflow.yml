@@ -31,12 +31,12 @@ jobs:
       - name: Install dependencies
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
-          npm install -f
+          yarn install
 
       - name: Run Webpack build
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
-          npm run build
+          yarn build:webpack
           
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.3
