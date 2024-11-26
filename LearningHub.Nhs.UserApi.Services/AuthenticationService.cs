@@ -47,12 +47,12 @@
 
             if (loginResult.IsAuthenticated)
             {
-                await this.elfhUserService.RecordSuccessfulSigninAsync(loginResult.UserId);
+               //// await this.elfhUserService.RecordSuccessfulSigninAsync(loginResult.UserId);
                 this.logger.LogInformation("User {lhuserid} has successfully authenticated.", loginResult.UserId);
             }
             else if (loginResult.UserId > 0)
             {
-                await this.elfhUserService.RecordUnsuccessfulSigninAsync(loginResult.UserId);
+               //// await this.elfhUserService.RecordUnsuccessfulSigninAsync(loginResult.UserId);
                 this.logger.LogWarning("User {lhuserid} has unsuccessfully authenticated. {errMsg}", loginResult.UserId, loginResult.ErrorMessage);
             }
 
