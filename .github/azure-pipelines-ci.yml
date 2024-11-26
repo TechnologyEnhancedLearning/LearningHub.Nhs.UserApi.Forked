@@ -39,6 +39,20 @@ jobs:
       workingDir: Auth/LearningHub.Nhs.Auth
       verbose: false
       customCommand: run build
+    - task: Checkout@1
+    displayName: yarn custom
+    inputs:
+      command: custom
+      workingDir: Auth/LearningHub.Nhs.Auth
+      verbose: false
+      customCommand: yarn install
+  - task: Checkout@1
+    displayName: yarn run webpack build
+    inputs:
+      command: custom
+      workingDir: Auth/LearningHub.Nhs.Auth
+      verbose: false
+      customCommand: yarn build
   - task: NuGetToolInstaller@1
     displayName: Use NuGet 5.8
     inputs:
