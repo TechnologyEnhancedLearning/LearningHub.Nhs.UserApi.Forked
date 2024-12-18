@@ -2,6 +2,7 @@
 @{
   ViewData["Title"] = "Login";
   ViewData["Layout"] = "learninghub/_Layout";
+  ViewData["DisableValidation"] = true;
   // OpenAthens url needs to makes sure that the return to WebUI first hits the authorisationrequired endpoint,
   // which contains it's own redirect to within the UI.
   // If a return url is specified we want to use it for the authorisationrequired original url
