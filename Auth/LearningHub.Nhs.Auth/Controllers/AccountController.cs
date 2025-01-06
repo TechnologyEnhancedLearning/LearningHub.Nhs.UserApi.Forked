@@ -427,6 +427,7 @@
         {
             var vm = await this.BuildLoginViewModelAsync(model.ReturnUrl);
             vm.Username = model.Username;
+            vm.Password = model.Password;
             vm.RememberLogin = model.RememberLogin;
             return vm;
         }
