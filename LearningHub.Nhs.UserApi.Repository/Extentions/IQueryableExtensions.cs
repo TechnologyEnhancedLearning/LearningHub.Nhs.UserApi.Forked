@@ -121,7 +121,7 @@
         }
 
         /// <summary>
-        /// ToListWithNoLock.
+        /// ToListWithNoLock..
         /// </summary>
         /// <typeparam name="T">Type.</typeparam>
         /// <param name="query">Query.</param>

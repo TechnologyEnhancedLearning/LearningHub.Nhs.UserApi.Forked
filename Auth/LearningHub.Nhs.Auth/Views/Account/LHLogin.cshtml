@@ -2,6 +2,7 @@
 @{
   ViewData["Title"] = "Login";
   ViewData["Layout"] = "learninghub/_Layout";
+  ViewData["DisableValidation"] = true;
   // OpenAthens url needs to makes sure that the return to WebUI first hits the authorisationrequired endpoint,
   // which contains it's own redirect to within the UI.
   // If a return url is specified we want to use it for the authorisationrequired original url
@@ -54,7 +55,7 @@
 
           <vc:text-input asp-for="Username"
                        label="Enter your username"
-                       populate-with-current-value="false"
+                       populate-with-current-value="true"
                        type="text"
                        spell-check="false"
                        hint-text="A username is different to an email address"
@@ -65,7 +66,7 @@
 
           <vc:text-input asp-for="Password"
                        label="Enter your password"
-                       populate-with-current-value="false"
+                       populate-with-current-value="true"
                        type="password"
                        spell-check="false"
                        hint-text=""
