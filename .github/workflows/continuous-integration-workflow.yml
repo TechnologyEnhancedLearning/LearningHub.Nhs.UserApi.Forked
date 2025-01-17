@@ -26,7 +26,7 @@ jobs:
       - name: Use Node 12.19
         uses: actions/setup-node@v4
         with:
-          node-version: '12.19'
+          node-version: '18'
 
       - name: Install dependencies
         run: |
