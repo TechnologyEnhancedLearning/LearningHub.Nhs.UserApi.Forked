@@ -26,17 +26,17 @@ jobs:
       - name: Use Node 12.19
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+           node-version: '18'
+           
       - name: Install dependencies
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
-          npm install -f
+          yarn install
 
       - name: Run Webpack build
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
-          npm run build
+          yarn build:webpack
           
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.3
