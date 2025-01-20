@@ -14,6 +14,8 @@ updates:
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
       - dependency-name: "Microsoft.FeatureManagement.AspNetCore*"
+      - dependency-name: "Serilog.*"
+      - dependency-name: "System.Data.SqlClien.*"
       - dependency-name: "elfhHub.Nhs.Models*"
       - dependency-name: "LearningHub.Nhs.Models*"
       - dependency-name: "LearningHub.Nhs.Caching*"
