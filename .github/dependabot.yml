@@ -9,12 +9,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10
-    debug: true
+    open-pull-requests-limit: 10    
     target-branch: "Automatic_version_update_dependabot"
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
       - dependency-name: "Microsoft.FeatureManagement.AspNetCore*"
+      - dependency-name: "Serilog.*"
       - dependency-name: "elfhHub.Nhs.Models*"
       - dependency-name: "LearningHub.Nhs.Models*"
       - dependency-name: "LearningHub.Nhs.Caching*"
