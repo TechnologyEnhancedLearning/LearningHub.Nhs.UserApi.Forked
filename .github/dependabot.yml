@@ -11,11 +11,18 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 5
     target-branch: "Automatic_version_update_dependabot"
+    registries:
+      - private-registry
+       type: nuget
+        url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
+        username: "kevin.whittaker"
+        password: ${{ secrets.AZURE_DEVOPS_PAT }}
+    ignore:
+      - dependency-name: "LearningHub.Nhs.Models*"
+      - dependency-name: "elfhHub.Nhs.Models*"
+      - dependency-name: "LearningHub.Nhs.Caching*"
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
-      - dependency-name: "elfhHub.Nhs.Models"
-      - dependency-name: "LearningHub.Nhs.Models"
-      - dependency-name: "LearningHub.Nhs.Caching"
       - dependency-name: "NHSUKViewComponents.Web"
       # Ignore some updates to the package
       - dependency-name: "Microsoft.VisualStudio.Web.CodeGeneration.Design"
