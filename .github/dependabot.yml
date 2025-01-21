@@ -11,6 +11,11 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 5
     target-branch: "Automatic_version_update_dependabot"
+    registries:
+      private-nuget:
+        url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
+        username: "kevin.whittaker" 
+        password: ${{ secrets.AZURE_DEVOPS_PAT }}
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
       - dependency-name: "elfhHub.Nhs.Models"
