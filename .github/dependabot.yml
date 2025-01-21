@@ -9,12 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10    
-    registries:
-      private-nuget:
-        url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
-        username: "kevin.whittaker" 
-        password: ${{ secrets.AZURE_DEVOPS_PAT }}
+    open-pull-requests-limit: 10
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
       - dependency-name: "Microsoft.FeatureManagement.AspNetCore*"
