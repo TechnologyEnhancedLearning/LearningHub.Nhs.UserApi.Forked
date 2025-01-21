@@ -6,12 +6,12 @@
 version: 2
 registries:
   - private-nuget:
-      type: nuget
+      type: nuget-feed
       url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
       username: "kevin.whittaker" 
       password: ${{ secrets.AZURE_DEVOPS_PAT }}
   - public-nuget: 
-      type: nuget
+      type: nuget-feed
       url: "https://api.nuget.org/v3/index.json" 
 updates:
   - package-ecosystem: "nuget" 
