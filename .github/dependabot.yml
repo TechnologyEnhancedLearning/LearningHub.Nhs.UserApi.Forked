@@ -13,13 +13,10 @@ updates:
     target-branch: "Automatic_version_update_dependabot"
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
-      - dependency-name: "Microsoft.FeatureManagement.AspNetCore*"
-      - dependency-name: "Serilog.*"
-      - dependency-name: "System.Data.SqlClien.*"
-      - dependency-name: "elfhHub.Nhs.Models*"
-      - dependency-name: "LearningHub.Nhs.Models*"
-      - dependency-name: "LearningHub.Nhs.Caching*"
-      - dependency-name: "NHSUKViewComponents.Web*"
+      - dependency-name: "elfhHub.Nhs.Models"
+      - dependency-name: "LearningHub.Nhs.Models"
+      - dependency-name: "LearningHub.Nhs.Caching"
+      - dependency-name: "NHSUKViewComponents.Web"
       # Ignore some updates to the package
       - dependency-name: "Microsoft.VisualStudio.Web.CodeGeneration.Design"
         versions: [">7.0.0"]
