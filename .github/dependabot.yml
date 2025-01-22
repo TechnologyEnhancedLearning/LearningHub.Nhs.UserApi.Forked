@@ -10,7 +10,7 @@ registries:
     url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
     username: "kevin.whittaker" 
     password: ${{ secrets.AZURE_DEVOPS_PAT }}   
-  nuget-package-sourcet:
+  nuget-package-source:
     type: nuget-feed
     url: "https://api.nuget.org/v3/index.json"  
 updates:
