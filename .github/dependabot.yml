@@ -4,22 +4,31 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+registries:
+  tel-azure-package-source:
+    type: nuget-feed
+    url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
+    username: "kevin.whittaker" 
+    password: ${{ secrets.AZURE_DEVOPS_PAT }}   
+  nuget-package-source:
+    type: nuget-feed
+    url: "https://api.nuget.org/v3/index.json"  
 updates:
   - package-ecosystem: "nuget" 
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    registries: 
-      - "private-nuget"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
+    registries:
+      - tel-azure-package-source
+      - nuget-package-source
     target-branch: "Automatic_version_update_dependabot"
-    
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
-      - dependency-name: "elfhHub.Nhs.Models"
-      - dependency-name: "LearningHub.Nhs.Models"
-      - dependency-name: "LearningHub.Nhs.Caching"
-      - dependency-name: "NHSUKViewComponents.Web"
+      - dependency-name: "elfhHub.Nhs.Models*"
+      - dependency-name: "LearningHub.Nhs.Models*"
+      - dependency-name: "LearningHub.Nhs.Caching*"
+      - dependency-name: "NHSUKViewComponents.Web*"
       # Ignore some updates to the package
       - dependency-name: "Microsoft.VisualStudio.Web.CodeGeneration.Design"
         versions: [">7.0.0"]
@@ -27,12 +36,26 @@ updates:
         versions: [">7.0.0"]
       - dependency-name: "Microsoft.AspNetCore.Mvc.Testing"
         versions: [">7.0.0"]
+      - dependency-name: "Microsoft.AspNetCore.Authentication.JwtBearer"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.AspNetCore.Authentication.OpenIdConnect"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.AspNetCore.Mvc.NewtonsoftJson"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.EntityFrameworkCore"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.EntityFrameworkCore.SqlServer"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.Extensions.Caching.StackExchangeRedis"
+        versions: [">7.0.0"]
+      - dependency-name: "Microsoft.Extensions.Logging.Console"
+        versions: [">7.0.0"]
       - dependency-name: "Selenium.WebDriver.ChromeDriver"
         versions: ">=113.0.5672.1278" # Recommended version     
       # For all packages, ignore all patch updates
       #- dependency-name: "*"
       #  update-types: ["version-update:semver-patch"]
-    
+
   # Configuration for npm Auth
   - package-ecosystem: "npm" 
     directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
@@ -40,14 +63,7 @@ updates:
       interval: "daily"
     target-branch: "Automatic_version_update_dependabot"
     #  - "dependencies"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"] 
-
-registries:
-  private-nuget:
-    type: nuget-feed
-    url: "https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json"
-    username: "kevin.whittaker" 
-    password: ${{ secrets.AZURE_DEVOPS_PAT }}
