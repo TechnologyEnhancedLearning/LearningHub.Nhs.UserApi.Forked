@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<UserSecretsId>00EF27C2-ECB6-4E37-A6B6-58E4E6189D0E</UserSecretsId>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Platforms>x64</Platforms>
@@ -103,7 +103,7 @@
 		<PackageReference Include="Azure.Identity" Version="1.13.2" />
 		<PackageReference Include="elfhHub.Nhs.Models" Version="3.0.8" />
 		<PackageReference Include="FluentValidation" Version="11.11.0" />
-		<PackageReference Include="IdentityServer4" Version="4.1.1" />
+		<PackageReference Include="IdentityServer4" Version="4.1.2" />
 		<PackageReference Include="IdentityServer4.Contrib.RedisStore" Version="4.0.0" />
 		<PackageReference Include="LearningHub.Nhs.Caching" Version="2.0.0" />
 		<PackageReference Include="LearningHub.Nhs.Models" Version="3.0.33" />

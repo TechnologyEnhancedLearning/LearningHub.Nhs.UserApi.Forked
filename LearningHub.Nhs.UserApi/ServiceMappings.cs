@@ -218,6 +218,8 @@ namespace LearningHub.Nhs.UserApi
         {
             services.AddSingleton(new MapperConfiguration(mc =>
             {
+                mc.AllowNullCollections = true;
+                mc.ShouldMapMethod = m => false;
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ElfhMappingProfile());
             }).CreateMapper());

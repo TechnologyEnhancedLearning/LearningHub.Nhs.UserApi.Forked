@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="elfhHub.Nhs.Models" Version="3.0.8" />
+    <PackageReference Include="elfhHub.Nhs.Models" Version="3.0.9" />
     <PackageReference Include="EntityFrameworkCore.Testing.Moq" Version="5.0.0" />
     <PackageReference Include="LearningHub.Nhs.Caching" Version="2.0.0" />
-    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.33" />
+    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.46" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
 	  <PackageReference Include="MockQueryable.Core" Version="7.0.3" />
 	  <PackageReference Include="MockQueryable.Moq" Version="5.0.0" />
