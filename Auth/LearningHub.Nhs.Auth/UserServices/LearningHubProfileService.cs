@@ -20,12 +20,16 @@
         /// <param name="userService">
         /// The user service.
         /// </param>
+        /// <param name="moodleApiService">
+        /// The moodle api service.
+        /// </param>
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public LearningHubProfileService(IUserService userService, ILogger<LearningHubProfileService> logger)
+        public LearningHubProfileService(IUserService userService, IMoodleApiService moodleApiService, ILogger<LearningHubProfileService> logger)
         {
             this.UserService = userService;
+            this.MoodleApiService = moodleApiService;
             this.Logger = logger;
         }
 
@@ -38,6 +42,11 @@
         /// Gets the user service.
         /// </summary>
         protected IUserService UserService { get; }
+
+        /// <summary>
+        /// Gets the moodle api service.
+        /// </summary>
+        protected IMoodleApiService MoodleApiService { get; }
 
         /// <summary>
         /// The get profile data async.
@@ -53,6 +62,8 @@
             if (context != null)
             {
                 var user = await this.UserService.GetBasicUserByUserIdAsync(context.Subject.GetSubjectId());
+                var moodleUser = await this.MoodleApiService.GetMoodleUserIdByUsernameAsync(user.Id);
+
                 var roleName = await this.UserService.GetUserRoleAsync(user.Id);
 
                 var claims = new List<Claim>
@@ -63,6 +74,7 @@
                                      new Claim("family_name", user.LastName),
                                      new Claim("role", roleName),
                                      new Claim("elfh_userName", user.UserName),
+                                     new Claim("preferred_username", moodleUser.ToString()),
                                  };
 
                 if (context.Subject.HasClaim("openAthensUser", "true"))

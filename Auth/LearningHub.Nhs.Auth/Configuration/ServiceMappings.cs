@@ -40,12 +40,22 @@
                             ServerCertificateCustomValidationCallback =
                                           HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
                         });
+
+                services.AddHttpClient<IMoodleHttpClient, MoodleHttpClient>()
+                    .ConfigurePrimaryHttpMessageHandler(
+                        () => new HttpClientHandler
+                        {
+                            ServerCertificateCustomValidationCallback =
+                                          HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+                        });
             }
             else
             {
                 services.AddHttpClient<IUserApiHttpClient, UserApiHttpClient>();
+                services.AddHttpClient<IMoodleHttpClient, MoodleHttpClient>();
             }
 
+            services.AddScoped<IMoodleApiService, MoodleApiService>();
             services.AddDistributedMemoryCache();
             services.AddScoped<IExternalSystemService, ExternalSystemService>();
             services.AddTransient<IRegistrationService, RegistrationService>();
