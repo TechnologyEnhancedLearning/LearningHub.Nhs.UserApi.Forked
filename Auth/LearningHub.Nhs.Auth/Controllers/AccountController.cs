@@ -20,15 +20,11 @@
     using LearningHub.Nhs.Auth.Models.Account;
     using LearningHub.Nhs.Caching;
     using LearningHub.Nhs.Models.Common;
-    using LearningHub.Nhs.Models.Entities.Reporting;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using NHSUKViewComponents.Web.ViewModels;
 
     /// <summary>
     /// Account Controller operations.
@@ -72,7 +68,7 @@
             this.authConfig = authConfig?.Value;
             this.webSettings = webSettings;
             this.logger = logger;
-    }
+        }
 
         /// <summary>
         /// Shows the Login page.
@@ -214,9 +210,9 @@
                 this.ModelState.AddModelError(string.Empty, loginResult.ErrorMessage);
             }
 
-             showFormWithError:
+showFormWithError:
 
-            // something went wrong, show form with error
+// something went wrong, show form with error
             var vm = await this.BuildLoginViewModelAsync(model);
             if ((vm.ClientId == "learninghubwebclient") || (vm.ClientId == "learninghubadmin"))
             {
@@ -268,6 +264,9 @@
                 // delete local authentication cookie
                 await this.HttpContext.SignOutAsync();
 
+                // Delete the authentication cookie to ensure it is invalidated
+                this.HttpContext.Response.Cookies.Delete(".AspNetCore.Identity.Application");
+
                 // raise the logout event
                 await this.Events.RaiseAsync(new UserLogoutSuccessEvent(this.User.GetSubjectId(), this.User.GetDisplayName()));
 
@@ -296,7 +295,15 @@
                 return this.SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
 
-            return this.View("LoggedOut", vm);
+            if (this.webSettings.IsPasswordUpdate)
+            {
+                var redirectUri = $"{this.webSettings.LearningHubWebClient}Home/ChangePasswordAcknowledgement";
+                return this.Redirect(redirectUri);
+            }
+            else
+            {
+                return this.View("LoggedOut", vm);
+            }
         }
 
         /// <summary>

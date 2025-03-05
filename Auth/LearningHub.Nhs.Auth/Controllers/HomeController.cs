@@ -81,6 +81,27 @@
         }
 
         /// <summary>
+        /// IsPasswordUpdateMethod.
+        /// </summary>
+        /// <param name="isLogout">The Logout.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
+        [HttpGet]
+        public IActionResult SetIsPasswordUpdate(bool isLogout)
+        {
+            if (isLogout)
+            {
+                this.webSettings.IsPasswordUpdate = false;
+            }
+            else
+            {
+                this.webSettings.IsPasswordUpdate = true;
+            }
+
+            var redirectUri = $"{this.webSettings.LearningHubWebClient}Home/UserLogout";
+            return this.Redirect(redirectUri);
+        }
+
+        /// <summary>
         /// Shows the HealthCheck response.
         /// </summary>
         /// <returns>HealthCheck.</returns>
