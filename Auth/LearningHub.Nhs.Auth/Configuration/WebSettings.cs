@@ -56,5 +56,10 @@
         /// Gets or sets the SupportFeedbackForm.
         /// </summary>
         public string SupportFeedbackForm { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether IsPasswordUpdate.
+        /// </summary>
+        public bool IsPasswordUpdate { get; set; }
   }
 }
