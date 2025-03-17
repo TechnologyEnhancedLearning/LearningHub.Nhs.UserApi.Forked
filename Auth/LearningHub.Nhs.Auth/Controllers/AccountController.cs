@@ -82,6 +82,12 @@
         [HttpGet]
         public async Task<IActionResult> Login(string returnUrl)
         {
+            returnUrl = null;
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                throw new Exception("ClientId or origin are empty.");
+            }
+
             // Use internal login page
             // build a model so we know what to show on the login page
             var vm = await this.BuildLoginViewModelAsync(returnUrl);
