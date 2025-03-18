@@ -39,7 +39,7 @@ try
 
     app.Use(async (context, next) =>
     {
-        context.Response.Headers.Add("content-security-policy", csp);
+        ////context.Response.Headers.Add("content-security-policy", csp);
         context.Response.Headers.Add("Referrer-Policy", "no-referrer");
         context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
         context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
