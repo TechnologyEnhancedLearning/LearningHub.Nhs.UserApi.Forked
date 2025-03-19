@@ -73,11 +73,7 @@
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
-            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-             {
-                 options.AccessDeniedPath = "/Home/AccessDenied";
-                 options.SessionStore = new InMemoryTicketStore(new ConcurrentDictionary<string, AuthenticationTicket>());
-             })
+            .AddCookie()
             .AddOpenIdConnect(
                 "oidc_oa",
                 options =>
