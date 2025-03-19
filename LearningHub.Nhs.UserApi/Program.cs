@@ -37,16 +37,16 @@ try
         c.SwaggerEndpoint($"/swagger/{app.Configuration["Swagger:Title"]}/swagger.json", app.Configuration["Swagger:Version"]);
     });
 
-    ////app.Use(async (context, next) =>
-    ////{
-    ////    context.Response.Headers.Add("content-security-policy", csp);
-    ////    context.Response.Headers.Add("Referrer-Policy", "no-referrer");
-    ////    context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-    ////    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-    ////    context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-    ////    context.Response.Headers.Add("X-XSS-protection", "0");
-    ////    await next();
-    ////});
+    app.Use(async (context, next) =>
+    {
+        context.Response.Headers.Add("content-security-policy", csp);
+        context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+        context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+        context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+        context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+        context.Response.Headers.Add("X-XSS-protection", "0");
+        await next();
+    });
 
     app.UseMiddleware<ExceptionMiddleware>();
 
