@@ -10,6 +10,7 @@ using NLog.Web;
 
 var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 
+var csp = "object-src 'none'; frame-ancestors 'none'; sandbox allow-forms allow-same-origin allow-scripts allow-popups; base-uri 'self';";
 try
 {
     logger.Debug("Log Started");
