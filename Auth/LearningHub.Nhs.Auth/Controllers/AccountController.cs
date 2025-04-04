@@ -201,41 +201,9 @@
                             throw new Exception("invalid return URL");
                         }
                     }
-                    else if (result.Items[0].BrowserName == clientInfo.UA.Family)
-                    {
-                        await this.SignInUser(userId, model.Username.Trim(), model.RememberLogin, context.Parameters["ext_referer"]);
-
-                        if (context != null)
-                        {
-                            if (await this.ClientStore.IsPkceClientAsync(context.Client.ClientId))
-                            {
-                                // if the client is PKCE then we assume it's native, so this change in how to
-                                // return the response is for better UX for the end user.
-                                return this.View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
-                            }
-
-                            // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                            return this.Redirect(model.ReturnUrl);
-                        }
-
-                        // request for a local page
-                        if (this.Url.IsLocalUrl(model.ReturnUrl))
-                        {
-                            return this.Redirect(model.ReturnUrl);
-                        }
-                        else if (string.IsNullOrEmpty(model.ReturnUrl))
-                        {
-                            return this.Redirect("~/");
-                        }
-                        else
-                        {
-                            // user might have clicked on a malicious link - should be logged
-                            throw new Exception("invalid return URL");
-                        }
-                    }
                     else
                     {
-                        this.ModelState.AddModelError(string.Empty, "already active session");
+                        return this.View("AlreadyActiveSession");
                     }
                 }
                 else if (userId > 0)
