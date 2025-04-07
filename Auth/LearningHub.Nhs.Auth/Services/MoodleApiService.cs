@@ -44,11 +44,14 @@
                 var result = response.Content.ReadAsStringAsync().Result;
                 var viewmodel = JsonConvert.DeserializeObject<MoodleUserResponseViewModel>(result);
 
-                foreach (var user in viewmodel.Users)
+                if (viewmodel?.Users != null)
                 {
-                    if (user.Username == currentUserId.ToString())
+                    foreach (var user in viewmodel.Users)
                     {
-                        moodleUserId = user.Id;
+                        if (user.Username == currentUserId.ToString())
+                        {
+                            moodleUserId = user.Id;
+                        }
                     }
                 }
             }
