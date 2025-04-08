@@ -185,7 +185,7 @@
                 ExternalSystemId = externalSystemId,
             };
 
-            await this.externalSystemUserRepository.CreateAsync(userId, userExternalSystem);
+            await this.externalSystemUserRepository.CreateExternalSystemUserAsync(userExternalSystem);
         }
 
         /// <inheritdoc/>
