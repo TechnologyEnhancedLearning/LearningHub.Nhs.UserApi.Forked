@@ -42,8 +42,8 @@
             try
             {
                 var param0 = new SqlParameter("@p0", SqlDbType.Int) { Value = userExternalSystem.UserId };
-                var param1 = new SqlParameter("@p1", SqlDbType.VarChar) { Value = userExternalSystem.ExternalSystemId };
-                var param2 = new SqlParameter("@p2", SqlDbType.VarChar) { Value = userExternalSystem.UserId };
+                var param1 = new SqlParameter("@p1", SqlDbType.Int) { Value = userExternalSystem.ExternalSystemId };
+                var param2 = new SqlParameter("@p2", SqlDbType.Int) { Value = userExternalSystem.UserId };
                 var param3 = new SqlParameter("@p3", SqlDbType.Int) { Value = this.TimezoneOffsetManager.UserTimezoneOffset ?? (object)DBNull.Value };
                 await this.DbContext.Database.ExecuteSqlRawAsync("[external].ExternalSystemUserCreate @p0, @p1, @p2, @p3", param0, param1, param2, param3);
             }
