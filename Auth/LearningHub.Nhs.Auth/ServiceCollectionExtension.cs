@@ -1,10 +1,12 @@
 ﻿namespace LearningHub.Nhs.Auth
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Security.Cryptography.X509Certificates;
     using Azure.Identity;
     using IdentityServer4;
     using LearningHub.Nhs.Auth.Configuration;
+    using LearningHub.Nhs.Auth.Helpers;
     using LearningHub.Nhs.Auth.Middleware;
     using LearningHub.Nhs.Caching;
     using LearningHub.Nhs.Models.Enums;
@@ -70,7 +72,9 @@
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie().AddOpenIdConnect(
+            })
+            .AddCookie()
+            .AddOpenIdConnect(
                 "oidc_oa",
                 options =>
                 {
