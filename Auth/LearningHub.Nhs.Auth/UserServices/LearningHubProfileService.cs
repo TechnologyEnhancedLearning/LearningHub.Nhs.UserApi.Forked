@@ -6,6 +6,7 @@
     using IdentityServer4.Extensions;
     using IdentityServer4.Models;
     using IdentityServer4.Services;
+    using LearningHub.Nhs.Auth.Configuration;
     using LearningHub.Nhs.Auth.Interfaces;
     using Microsoft.Extensions.Logging;
 
@@ -14,6 +15,8 @@
     /// </summary>
     public class LearningHubProfileService : IProfileService
     {
+        private readonly WebSettings webSettings;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LearningHubProfileService"/> class.
         /// </summary>
@@ -26,11 +29,15 @@
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public LearningHubProfileService(IUserService userService, IMoodleApiService moodleApiService, ILogger<LearningHubProfileService> logger)
+        /// <param name="webSettings">
+        /// The webSettings.
+        /// </param>
+        public LearningHubProfileService(IUserService userService, IMoodleApiService moodleApiService, ILogger<LearningHubProfileService> logger, WebSettings webSettings)
         {
             this.UserService = userService;
             this.MoodleApiService = moodleApiService;
             this.Logger = logger;
+            this.webSettings = webSettings;
         }
 
         /// <summary>
@@ -62,8 +69,6 @@
             if (context != null)
             {
                 var user = await this.UserService.GetBasicUserByUserIdAsync(context.Subject.GetSubjectId());
-                var moodleUser = await this.MoodleApiService.GetMoodleUserIdByUsernameAsync(user.Id);
-
                 var roleName = await this.UserService.GetUserRoleAsync(user.Id);
 
                 var claims = new List<Claim>
@@ -74,8 +79,13 @@
                                      new Claim("family_name", user.LastName),
                                      new Claim("role", roleName),
                                      new Claim("elfh_userName", user.UserName),
-                                     new Claim("preferred_username", moodleUser.ToString()),
                                  };
+
+                if (this.webSettings.EnableMoodle)
+                {
+                    var moodleUser = await this.MoodleApiService.GetMoodleUserIdByUsernameAsync(user.Id);
+                    claims.Add(new Claim("preferred_username", moodleUser.ToString()));
+                }
 
                 if (context.Subject.HasClaim("openAthensUser", "true"))
                 {
