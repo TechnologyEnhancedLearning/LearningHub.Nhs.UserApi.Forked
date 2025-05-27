@@ -61,5 +61,10 @@
         /// Gets or sets a value indicating whether IsPasswordUpdate.
         /// </summary>
         public bool IsPasswordUpdate { get; set; }
-  }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether gets or sets a value to Enable Moodle.
+        /// </summary>
+        public bool EnableMoodle { get; set; }
+    }
 }

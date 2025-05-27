@@ -9,6 +9,7 @@
     using LearningHub.Nhs.UserApi.Repository.Interface;
     using Microsoft.Data.SqlClient;
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// The user history repository.
@@ -66,11 +67,13 @@
                     new SqlParameter("@LoginIP", SqlDbType.VarChar) { Value = userHistoryVM.LoginIP ?? (object)DBNull.Value },
                     new SqlParameter("@LoginSuccessFul", SqlDbType.Bit) { Value = userHistoryVM.LoginSuccessFul ?? (object)DBNull.Value },
                     new SqlParameter("@TenantId", SqlDbType.Int) { Value = tenantId },
+                    new SqlParameter("@SessionId", SqlDbType.VarChar) { Value = (userHistoryVM.UserHistoryTypeId == 0 && userHistoryVM.Detail == "User logged on. Source of auth: LearningHub.Nhs.Auth Account\\Login") ? userHistoryVM.SessionId : (object)DBNull.Value },
+                    new SqlParameter("@IsActive", SqlDbType.Bit) { Value = (userHistoryVM.UserHistoryTypeId == 0 && userHistoryVM.Detail == "User logged on. Source of auth: LearningHub.Nhs.Auth Account\\Login") ? userHistoryVM.IsActive : (object)DBNull.Value },
                     new SqlParameter("@AmendUserId", SqlDbType.Int) { Value = userId },
                     new SqlParameter("@AmendDate", SqlDbType.DateTimeOffset) { Value = DateTimeOffset.Now },
                 };
 
-                string sql = "proc_UserHistoryInsert @UserId, @UserHistoryTypeId, @Detail, @UserAgent, @BrowserName, @BrowserVersion, @UrlReferer, @LoginIP, @LoginSuccessFul, @TenantId, @AmendUserId, @AmendDate";
+                string sql = "proc_UserHistoryInsert @UserId, @UserHistoryTypeId, @Detail, @UserAgent, @BrowserName, @BrowserVersion, @UrlReferer, @LoginIP, @LoginSuccessFul, @TenantId, @SessionId, @IsActive, @AmendUserId, @AmendDate";
 
                 await this.DbContext.Database.ExecuteSqlRawAsync(sql, sqlParams);
             }
@@ -97,6 +100,25 @@
             retVal.TotalResults = (int)param3.Value;
 
             return retVal;
+        }
+
+        /// <inheritdoc/>
+        public async Task<UserHistoryStoredProcResults> CheckUserHasActiveSessionAsync(int userId)
+        {
+            try
+            {
+                var retVal = new UserHistoryStoredProcResults();
+                var param0 = new SqlParameter("@p0", SqlDbType.Int) { Value = userId };
+
+                var result = await this.DbContext.Set<UserHistoryStoredProcResult>().FromSqlRaw(
+                                 "dbo.proc_ActiveLearningHubUserbyId @p0", param0).AsNoTracking().ToListWithNoLockAsync();
+                retVal.Results = result;
+                return retVal;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

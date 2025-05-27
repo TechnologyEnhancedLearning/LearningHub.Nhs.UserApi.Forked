@@ -59,5 +59,12 @@
         /// The <see cref="Task"/>.
         /// </returns>
         Task<UserHistoryStoredProcResults> GetPagedByUserIdAsync(int userId, int startPage, int pageSize);
+
+        /// <summary>
+        /// Check user has an active login session.
+        /// </summary>
+        /// <param name="userId">The userId.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
+        Task<UserHistoryStoredProcResults> CheckUserHasActiveSessionAsync(int userId);
     }
 }

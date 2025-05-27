@@ -115,6 +115,13 @@
         Task StoreUserHistoryAsync(UserHistoryViewModel userHistory);
 
         /// <summary>
+        /// check user has an laredy active session.
+        /// </summary>
+        /// <param name="userId">The userId.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
+        Task<PagedResultSet<UserHistoryViewModel>> CheckUserHasAnActiveSessionAsync(int userId);
+
+        /// <summary>
         /// The store user history async.
         /// </summary>
         /// <param name="detail">Text description of the user history entry.</param>

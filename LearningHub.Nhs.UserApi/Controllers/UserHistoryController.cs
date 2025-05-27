@@ -101,6 +101,19 @@
         }
 
         /// <summary>
+        /// Check the user has an active login session.
+        /// </summary>
+        /// <param name="userId">The UserId.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
+        [HttpGet]
+        [Route("CheckUserHasActiveSession/{userId}")]
+        public async Task<IActionResult> CheckUserHasActiveSessionAsync(int userId)
+        {
+            PagedResultSet<UserHistoryViewModel> pagedResultSet = await this.userHistoryService.CheckUserHasActiveSessionAsync(userId);
+            return this.Ok(pagedResultSet);
+        }
+
+        /// <summary>
         /// Create a UserHistory.
         /// </summary>
         /// <param name="userHistory">The user history.</param>
