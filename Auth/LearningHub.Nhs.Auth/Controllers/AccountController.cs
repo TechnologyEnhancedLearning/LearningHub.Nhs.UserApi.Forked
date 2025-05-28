@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
-    using Azure.Core;
     using elfhHub.Nhs.Models.Common;
     using elfhHub.Nhs.Models.Enums;
     using IdentityModel;
@@ -23,11 +22,9 @@
     using LearningHub.Nhs.Models.Common;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using UAParser;
 
     /// <summary>
     /// Account Controller operations.
@@ -166,44 +163,34 @@
 
                 if (loginResult.IsAuthenticated)
                 {
-                    var uaParser = Parser.GetDefault();
-                    var clientInfo = uaParser.Parse(this.Request.Headers["User-Agent"]);
-                    var result = await this.UserService.CheckUserHasAnActiveSessionAsync(userId);
-                    if (result.Items.Count == 0 || result.Items[0].BrowserName == clientInfo.UA.Family)
+                    await this.SignInUser(userId, model.Username.Trim(), model.RememberLogin, context.Parameters["ext_referer"]);
+
+                    if (context != null)
                     {
-                        await this.SignInUser(userId, model.Username.Trim(), model.RememberLogin, context.Parameters["ext_referer"]);
-
-                        if (context != null)
+                        if (await this.ClientStore.IsPkceClientAsync(context.Client.ClientId))
                         {
-                            if (await this.ClientStore.IsPkceClientAsync(context.Client.ClientId))
-                            {
-                                // if the client is PKCE then we assume it's native, so this change in how to
-                                // return the response is for better UX for the end user.
-                                return this.View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
-                            }
-
-                            // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                            return this.Redirect(model.ReturnUrl);
+                            // if the client is PKCE then we assume it's native, so this change in how to
+                            // return the response is for better UX for the end user.
+                            return this.View("Redirect", new RedirectViewModel { RedirectUrl = model.ReturnUrl });
                         }
 
-                        // request for a local page
-                        if (this.Url.IsLocalUrl(model.ReturnUrl))
-                        {
-                            return this.Redirect(model.ReturnUrl);
-                        }
-                        else if (string.IsNullOrEmpty(model.ReturnUrl))
-                        {
-                            return this.Redirect("~/");
-                        }
-                        else
-                        {
-                            // user might have clicked on a malicious link - should be logged
-                            throw new Exception("invalid return URL");
-                        }
+                        // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
+                        return this.Redirect(model.ReturnUrl);
+                    }
+
+                    // request for a local page
+                    if (this.Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return this.Redirect(model.ReturnUrl);
+                    }
+                    else if (string.IsNullOrEmpty(model.ReturnUrl))
+                    {
+                        return this.Redirect("~/");
                     }
                     else
                     {
-                        return this.View("AlreadyActiveSession");
+                        // user might have clicked on a malicious link - should be logged
+                        throw new Exception("invalid return URL");
                     }
                 }
                 else if (userId > 0)

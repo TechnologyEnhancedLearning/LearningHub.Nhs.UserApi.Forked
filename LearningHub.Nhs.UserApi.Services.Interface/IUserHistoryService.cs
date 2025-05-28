@@ -53,12 +53,5 @@
         /// The <see cref="Task"/>.
         /// </returns>
         Task<PagedResultSet<UserHistoryViewModel>> GetUserHistoryPageAsync(int page, int pageSize, string sortColumn = "", string sortDirection = "", string presetFilter = "", string filter = "");
-
-        /// <summary>
-        /// Check user has an active login session.
-        /// </summary>
-        /// <param name="userId">The userId.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
-        Task<PagedResultSet<UserHistoryViewModel>> CheckUserHasActiveSessionAsync(int userId);
     }
 }
