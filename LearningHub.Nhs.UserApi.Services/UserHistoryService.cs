@@ -1,6 +1,5 @@
 ﻿namespace LearningHub.Nhs.UserApi.Services
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -57,8 +56,6 @@
 
             if (retVal.IsValid)
             {
-                userHistoryVM.SessionId = Guid.NewGuid().ToString();
-                userHistoryVM.IsActive = true;
                 await this.userHistoryRepository.CreateAsync(userHistoryVM.UserId, this.settings.LearningHubTenantId, userHistoryVM);
             }
 
@@ -99,16 +96,6 @@
                 result.TotalItemCount = userHistory.TotalResults;
             }
 
-            return result;
-        }
-
-        /// <inheritdoc/>
-        public async Task<PagedResultSet<UserHistoryViewModel>> CheckUserHasActiveSessionAsync(int userId)
-        {
-            PagedResultSet<UserHistoryViewModel> result = new PagedResultSet<UserHistoryViewModel>();
-            var userHistory = await this.userHistoryRepository.CheckUserHasActiveSessionAsync(userId);
-            userHistory.Results.ForEach(x => x.UserAgent = this.ParseUserAgentString(x.UserAgent));
-            result.Items = this.mapper.Map<List<UserHistoryViewModel>>(userHistory.Results);
             return result;
         }
 
