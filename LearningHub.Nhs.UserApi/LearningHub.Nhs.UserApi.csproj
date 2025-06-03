@@ -1,43 +1,37 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<Platforms>x64</Platforms>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>LearningHub.Nhs.UserApi.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Remove="nlog.config" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="elfhHub.Nhs.Models" Version="3.0.10" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
-    <PackageReference Include="LearningHub.Nhs.Caching" Version="2.0.0" />
-    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.46" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.36" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="4.15.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <PackageReference Include="elfhHub.Nhs.Models" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" />
+    <PackageReference Include="LearningHub.Nhs.Caching" />
+    <PackageReference Include="LearningHub.Nhs.Models" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <PackageReference Include="NLog.Web.AspNetCore" />
+    <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="System.Data.SqlClient" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Repository.Interface\LearningHub.Nhs.UserApi.Repository.Interface.csproj" />
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Repository\LearningHub.Nhs.UserApi.Repository.csproj" />
@@ -45,12 +39,14 @@
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Services\LearningHub.Nhs.UserApi.Services.csproj" />
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Shared\LearningHub.Nhs.UserApi.Shared.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="LearningHub.Nhs.UserApi.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://codemagic.io/codemagic-schema.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties appsettings_1development_1json__JsonSchema="https://codemagic.io/codemagic-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

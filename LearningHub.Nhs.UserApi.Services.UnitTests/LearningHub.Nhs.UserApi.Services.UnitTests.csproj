@@ -1,37 +1,33 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Platforms>x64</Platforms>
+    <Platforms>x64</Platforms>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="elfhHub.Nhs.Models" Version="3.0.10" />
-    <PackageReference Include="EntityFrameworkCore.Testing.Moq" Version="5.0.0" />
-    <PackageReference Include="LearningHub.Nhs.Caching" Version="2.0.0" />
-    <PackageReference Include="LearningHub.Nhs.Models" Version="3.0.46" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-	  <PackageReference Include="MockQueryable.Core" Version="7.0.3" />
-	  <PackageReference Include="MockQueryable.Moq" Version="5.0.0" />
-    <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="xunit" Version="2.9.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
+    <PackageReference Include="elfhHub.Nhs.Models" />
+    <PackageReference Include="EntityFrameworkCore.Testing.Moq" />
+    <PackageReference Include="LearningHub.Nhs.Caching" />
+    <PackageReference Include="LearningHub.Nhs.Models" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="MockQueryable.Core" />
+    <PackageReference Include="MockQueryable.Moq" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
+    <PackageReference Include="coverlet.collector">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Services\LearningHub.Nhs.UserApi.Services.csproj" />
     <ProjectReference Include="..\LearningHub.Nhs.UserApi.Shared\LearningHub.Nhs.UserApi.Shared.csproj" />
   </ItemGroup>
-
 </Project>
