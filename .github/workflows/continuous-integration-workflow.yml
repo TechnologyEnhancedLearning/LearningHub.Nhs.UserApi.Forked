@@ -5,6 +5,7 @@ env:
   BuildParameters.TestProjects: '**/*[Tt]ests/*.csproj'
   BuildParameters.projects: '**/*.csproj'
   BuildParameters.sqlprojects: '**/*.sqlproj'  
+  AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
 jobs:
   build:
     name: Build and test
@@ -17,9 +18,6 @@ jobs:
         with:
           dotnet-version: 8.0.x     
       
-      - name: Add Azure artifact
-        run: dotnet nuget add source 'https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json' --name 'LearningHubFeed'  --username 'kevin.whittaker' --password ${{ secrets.AZURE_DEVOPS_PAT }} --store-password-in-clear-text
-
       - name: Use NuGet 5.8
         uses: nuget/setup-nuget@v1  
         
