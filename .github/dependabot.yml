@@ -18,11 +18,11 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 1
     registries:
       - tel-azure-package-source
       - nuget-package-source
-    target-branch: "Automatic_version_update_dependabot"
+    target-branch: "Develop/Features/TD-3684_implement_central_package_management_userapi"
     ignore:
       # Ignore updates to packages that start with 'Wildcards'
       - dependency-name: "elfhHub.Nhs.Models*"
@@ -61,9 +61,9 @@ updates:
     directory: "Auth/LearningHub.Nhs.Auth/" # Location of package manifests
     schedule:
       interval: "daily"
-    target-branch: "Automatic_version_update_dependabot"
+    target-branch: "Develop/Features/TD-3684_implement_central_package_management_userapi"
     #  - "dependencies"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 1
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"] 
