@@ -1,13 +1,10 @@
 name: Continuous Integration
-
 on: [push]
-
 env:
   BuildParameters.RestoreBuildProjects: '**/*.csproj'
   BuildParameters.TestProjects: '**/*[Tt]ests/*.csproj'
   BuildParameters.projects: '**/*.csproj'
-  BuildParameters.sqlprojects: '**/*.sqlproj'
-
+  BuildParameters.sqlprojects: '**/*.sqlproj'  
 jobs:
   build:
     name: Build and test
@@ -18,19 +15,19 @@ jobs:
       - name: Setup .NET Core SDK 8.0
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
-
+          dotnet-version: 8.0.x     
+      
       - name: Add Azure artifact
-        run: dotnet nuget add source 'https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json' --name 'LearningHubFeed' --username 'kevin.whittaker' --password ${{ secrets.AZURE_DEVOPS_PAT }} --store-password-in-clear-text
+        run: dotnet nuget add source 'https://pkgs.dev.azure.com/e-LfH/_packaging/LearningHubFeed/nuget/v3/index.json' --name 'LearningHubFeed'  --username 'kevin.whittaker' --password ${{ secrets.AZURE_DEVOPS_PAT }} --store-password-in-clear-text
 
       - name: Use NuGet 5.8
-        uses: nuget/setup-nuget@v1
-
+        uses: nuget/setup-nuget@v1  
+        
       - name: Use Node 12.19
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+           node-version: '18'
+           
       - name: Install dependencies
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
@@ -40,19 +37,21 @@ jobs:
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
           yarn build:webpack
-
+          
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.3
 
-      - name: Restore NuGet packages
-        run: dotnet restore --configfile nuget.config
-
       - name: Build SQL Server Database project
         run: |
+          # Enable strict error handling
           $ErrorActionPreference = 'Stop'
+      
+          # Initialize an error collection
           $errors = @()
+      
+          # List all .sqlproj files
           $sqlproj_files = Get-ChildItem -Path . -Filter *.sqlproj -Recurse
-
+      
           if ($sqlproj_files.Count -eq 0) {
             $errors += "No .sqlproj files found."
           } else {
@@ -61,51 +60,60 @@ jobs:
               try {
                 $output = &msbuild "$($sqlproj_file.FullName)" /p:Configuration=Release /nologo 2>&1
                 if (!$?) {
-                  $errors += "Failed to build $($sqlproj_file.FullName): $output"
+                  $errors += "Failed to build $($csproj_file.FullName): $output"
                 }
               } catch {
+                # Capture detailed error information
                 $errorMessage = "Error building $($sqlproj_file.FullName): $($_.Exception.Message)"
                 Write-Host $errorMessage
                 $errors += $errorMessage
               }
             }
           }
-
+      
+          # Display all accumulated errors
           if ($errors.Count -gt 0) {
             Write-Host "SQL Project Build Errors:"
             $errors | ForEach-Object { Write-Host $_ }
             exit 1
           }
-
+      
       - name: Build Solution Excluding SQL Project
         run: |
+          # Enable strict error handling
           $ErrorActionPreference = 'Stop'
+      
+          # Initialize an error collection
           $errors = @()
+      
+          # List all .csproj files except .sqlproj
           $csproj_files = Get-ChildItem -Path . -Filter *.csproj -Recurse | Where-Object { $_.FullName -notmatch '\\.sqlproj$' }
-
+      
           if ($csproj_files.Count -eq 0) {
             $errors += "No .csproj files found."
           } else {
             foreach ($csproj_file in $csproj_files) {
               Write-Host "Building $($csproj_file.FullName)"
               try {
-                $output = &dotnet build "$($csproj_file.FullName)" --configuration Release --no-restore 2>&1
+                $output = &dotnet build "$($csproj_file.FullName)" --configuration Release 2>&1
                 if (!$?) {
                   $errors += "Failed to build $($csproj_file.FullName): $output"
                 }
               } catch {
+                # Capture detailed error information
                 $errorMessage = "Error building $($csproj_file.FullName): $($_.Exception.Message)"
                 Write-Host $errorMessage
                 $errors += $errorMessage
               }
             }
           }
-
+        
+           # Display all accumulated errors
           if ($errors.Count -gt 0) {
             Write-Host "Solution Build Errors:"
             $errors | ForEach-Object { Write-Host $_ }
             exit 1
           }
-
+        
       #- name: Test
-      #  run: dotnet test ${{ env.BuildParameters.TestProjects }}
+      #  run: dotnet test ${{ env.BuildParameters.TestProjects }}  
