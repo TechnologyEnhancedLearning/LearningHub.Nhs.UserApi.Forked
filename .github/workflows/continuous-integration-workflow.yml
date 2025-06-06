@@ -5,7 +5,7 @@ env:
   BuildParameters.TestProjects: '**/*[Tt]ests/*.csproj'
   BuildParameters.projects: '**/*.csproj'
   BuildParameters.sqlprojects: '**/*.sqlproj'  
-  AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+  
 jobs:
   build:
     name: Build and test
@@ -35,7 +35,12 @@ jobs:
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
           yarn build:webpack
-          
+
+      - name: Restore dependencies
+        run: dotnet restore --configfile nuget.config
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+      
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.3
 
