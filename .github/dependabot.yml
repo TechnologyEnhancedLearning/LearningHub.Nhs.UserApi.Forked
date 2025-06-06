@@ -32,6 +32,8 @@ updates:
       # Ignore some updates to the package
       - dependency-name: "Microsoft.VisualStudio.Web.CodeGeneration.Design"
         versions: [">7.0.0"]
+      - dependency-name: "MockQueryable.Moq"
+        versions: [">5.0.0"]  
       - dependency-name: "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
         versions: [">7.0.0"]
       - dependency-name: "Microsoft.AspNetCore.Mvc.Testing"
