@@ -37,7 +37,10 @@ jobs:
         run: |
           cd ./Auth/LearningHub.Nhs.Auth
           yarn build:webpack
-          
+      
+      - name: Restore dependencies
+        run: dotnet restore
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.3
 
